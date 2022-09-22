@@ -5,7 +5,7 @@ $pageName = 'list';
 $perPage = 5;
 $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
 
-$sql = "SELECT * FROM `category` WHERE 1";
+// $sql = "SELECT * FROM `category` WHERE 1";
 
 $t_sql = "SELECT COUNT(1) FROM `product-list` WHERE 1";
 $totalRows = $pdo->query($t_sql)->fetch(PDO::FETCH_NUM)[0];
@@ -53,18 +53,21 @@ include __DIR__ . '/parts/nav-bar-no-admin.php'; ?>
             <nav aria-label="Page navigation example">
                 <ul class="pagination">
                     <li class="page-item <?= 1 === $page ? 'disabled' : '' ?>">
-                        <a class="page-link" href="?page= .'<?= $page - 1 ?>'">
+                        <a class="page-link" href="?page=<?= $page - 1 ?>">
                             <i class="fa-solid fa-arrow-left"></i>
                         </a>
                     </li>
-                    <?php for ($i = $page - 2; $i <= $page + 2; $i++) :
+                    <?php for ($i = 1; $i <= $totalPages; $i++) :
                         if ($i >= 1 and $i <= $totalPages) :
                     ?>
                             <li class="page-item <?= $i === $page ? 'active' : '' ?>">
-                                <a class="page-link" href="?page= .'<?= $page ?>'">
+                                <a class="page-link" href="?page=.'<?= $page ?>'">
                                     <?= $i ?>
                                 </a>
                             </li>
+                        <?php else : ?>
+
+
                     <?php endif;
                     endfor; ?>
                     <li class="page-item <?= $totalPages === $page ? 'disabled' : '' ?>">
@@ -78,23 +81,25 @@ include __DIR__ . '/parts/nav-bar-no-admin.php'; ?>
     </div>
     <div class="row d-flex flex-row justify-content-start align-content-between">
         <?php foreach ($rows as $r) : ?>
-            <div class="col-md-3 mb-3">
+            <div class="col-md-3 mb-3 product-unit" data-sid="<?= $r['sid'] ?>">
                 <div class="card h-100 d-flex flex-column h-100" style="min-width: 12rem;">
                     <img src="<?= $r['product_image'] ?>" class="card-img-top" style="height: 180px; object-fit: cover;">
                     <div class="card-body d-flex flex-column justify-content-start align-items-start h-100">
                         <h6 class="card-title"><?= $r['product_name'] ?></h6>
                         <p class="card-text flex-grow-1"><?= $r['product_description'] ?></p>
                         <p class="card-text">＄<?= $r['product_price'] ?></p>
-                        <form class="w-75 d-flex flex-row  justify-content-around px-1 mb-4">
-                            <select name="" id="" class="form-control qty " style="display: inline-block; width: auto">
-                                <option selected disabled>請選擇數量</option>
-                                <?php for ($i = 1; $i <= 5; $i++) : ?>
-                                    <option value="<?= $i ?>"><?= $i ?></option>
-                                <? endfor; ?>
-                            </select>
-                            <button type="button" class="btn btn-success add-to-cart-btn">
-                                <i class="fa-solid fa-cart-shopping"></i>
-                            </button>
+                        <form>
+                            <div class="form-group w-75 d-flex flex-row  justify-content-around px-1 mb-4">
+                                <select class="form-control qty" style="display: inline-block; width: auto">
+                                    <option selected disabled>請選擇數量</option>
+                                    <?php for ($i = 1; $i <= 5; $i++) : ?>
+                                        <option value="<?= $i ?>"><?= $i ?></option>
+                                    <? endfor; ?>
+                                </select>
+                                <button type="button" class="btn btn-success add-to-cart-btn">
+                                    <i class="fa-solid fa-cart-shopping"></i>
+                                </button>
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -105,19 +110,21 @@ include __DIR__ . '/parts/nav-bar-no-admin.php'; ?>
 <?php
 include __DIR__ . '/parts/scripts.php'; ?>
 <script>
-    const fd = document.formProduct;
+    const btn = $('.add-to-cart-btn');
 
-    function addToCart() {
-        fetch('cart.php', {
-                method: 'POST',
-                body: fd,
-            })
-            .then(r => r.json())
-            .then(obj => {
-                console.log(obj);
-            })
+    btn.click(function() {
+        const sid = $(this).closest('.product-unit').attr('data-sid');
+        const qty = $(this).closest('.product-unit').find('.qty').val();
 
-    }
+        //console.log({sid, qty});
+
+        $.get('01-add-to-cart-api.php', {
+            sid,
+            qty
+        }, function(data) {
+            conutCartObj(data);
+        }, 'json');
+    })
 </script>
 <?php
 include __DIR__ . '/parts/html-foot.php'; ?>
