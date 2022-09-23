@@ -5,8 +5,9 @@ if (!isset($_SESSION['cart'])) {
     $_SESSION['cart'] = [];
 }
 
-$sid = isset($_GET['sid']) ? intval($_GET['sid']) : 0;
-$qty = isset($_GET['qty']) ? intval($_GET['qty']) : 0;
+$sid = isset($_POST['sid']) ? intval($_POST['sid']) : 0;
+$qty = isset($_POST['qty']) ? intval($_POST['qty']) : 0;
+
 
 if (!empty($sid)) {
 
@@ -15,7 +16,8 @@ if (!empty($sid)) {
         if (!empty($_SESSION['cart'][$sid])) {
             $_SESSION['cart'][$sid]['qty'] = $qty;
         } else {
-            $row = $pdo->query("SELECT * FROM `product-list` WHERE `sid` = $sid")->fetch();
+            $sql = "SELECT * FROM `product-list` WHERE `product_sid`= $sid" ;
+            $row = $pdo->query($sql)->fetch();
 
             if (!empty($row)) {
                 $row['qty'] = $qty;
