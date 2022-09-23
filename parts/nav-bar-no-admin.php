@@ -24,13 +24,13 @@ if (!isset($_SESSION)) {
                         <a class="nav-link <?= $pageName == 'base' ? 'active' : '' ?>" href="basepage.php">首頁</a>
                     </li>
                     <li class="nav-item <?= $pageName == 'product' ? 'active' : '' ?>">
-                        <a class="nav-link" href="#">商品</a>
+                        <a class="nav-link" href="01-product-list-cart.php">商品</a>
                     </li>
                     <li class="nav-item <?= $pageName == 'event' ? 'active' : '' ?>">
                         <a class="nav-link" href="#">活動</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="cart.php">
+                        <a class="nav-link" href="01-cart.php">
                             <i class="fa-solid fa-cart-shopping"></i>
                         </a>
                     </li>
