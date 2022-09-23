@@ -81,7 +81,7 @@ include __DIR__ . '/parts/scripts.php'; ?>
         return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
     };
 
-    function removeItem(event){
+    function removeItem(event) {
         const tr = $(event.currentTarget).closest('tr');
         const sid = tr.attr('data-sid');
 
@@ -117,10 +117,10 @@ include __DIR__ . '/parts/scripts.php'; ?>
             'json');
     }
 
-    function updatePrices(){
+    function updatePrices() {
         let total = 0;
 
-        $('.cart-item').each(function(){
+        $('.cart-item').each(function() {
             const tr = $(this);
             const td_price = tr.find('product_price');
             const td_sub = tr.find('.sub-total');
