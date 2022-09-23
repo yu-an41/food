@@ -1,8 +1,5 @@
 <?php
-require __DIR__ . '/parts/connect_db.php';
-if (!isset($_SESSION['admin'])) {
-    header('Location: login-form-admin.php');
-}
+include __DIR__ . '/parts/connect_db.php';
 $pageName = 'orderHistory';
 
 $perPage = 5;
