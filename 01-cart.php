@@ -10,9 +10,9 @@ include __DIR__ . '/parts/nav-bar-no-admin.php'; ?>
 <div class="container">
     <div class="row d-flex flex-column align-items-end">
         <h4 class="text-center mb-3">我的購物車</h4>
-        <div class="col-sm-6 col-md-4 col-lg3 col-xl-2 mb-3">
+        <!-- <div class="col-sm-6 col-md-4 col-lg3 col-xl-2 mb-3">
             <button type="button" class="btn btn-secondary">清空購物車</button>
-        </div>
+        </div> -->
     </div>
     <?php if (empty($_SESSION['cart'])) : ?>
         <div class="alert alert-danger" role="alert">
