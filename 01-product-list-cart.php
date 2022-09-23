@@ -40,6 +40,10 @@ if ($totalRows > 0) {
 include __DIR__ . '/parts/html-head.php'; ?>
 <?php
 include __DIR__ . '/parts/nav-bar-no-admin.php'; ?>
+<form id="form1">
+    <input id="sid" name="sid" type="text">
+    <input id="qty" name="qty" type="text">
+</form>
 <div class="container">
     <div class="row">
         <div class="col">
@@ -82,7 +86,7 @@ include __DIR__ . '/parts/nav-bar-no-admin.php'; ?>
                                     <option value="<?= $i ?>"><?= $i ?></option>
                                 <? endfor; ?>
                             </select>
-                            <button class="btn btn-success add-to-cart-btn" data-sid="<?= $r['sid'] ?>" onclick="addToCart(event)">
+                            <button class="btn btn-success add-to-cart-btn" data-sid="<?= $r['product_sid'] ?>" onclick="addToCart(event)">
                                 <i class="fa-solid fa-cart-shopping"></i>
                             </button>
                         </div>
@@ -96,19 +100,27 @@ include __DIR__ . '/parts/nav-bar-no-admin.php'; ?>
 include __DIR__ . '/parts/scripts.php'; ?>
 <script>
     function addToCart(event) {
-        const btn = $(event.currentTarget);
-        const qty = btn.closest('.card-body').find('select').val();
-        const sid = btn.attr('data-sid');
+        const sid = document.querySelector('#sid');
+        const qty = document.querySelector('#qty');
 
-        console.log({ sid, qty});
+        const mySid = event.currentTarget.getAttribute('data-sid');
+        const myQty = event.currentTarget.parentNode.querySelector('.form-select').value;
+        // console.log(myQty);
+        // console.log(btn);
 
-        $.get('01-handle-cart.php', {
-            sid,
-            qty
-        }, function(data) {
-            conutCartObj(data);
-            showCartCount(data);
-        }, 'json');
+        sid.value = mySid;
+        qty.value = myQty;
+
+        const fd = new FormData(document.querySelector('#form1'));
+
+        fetch('01-handle-cart.php', {
+                method: 'POST',
+                body: fd
+            })
+            .then(r => r.json())
+            .then(obj => {
+                console.log(obj);
+            })
     }
 
     // btn.click(function() {
