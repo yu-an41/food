@@ -1,10 +1,26 @@
 <?php
 include __DIR__ . '/parts/connect_db.php';
-$pageName = 'orderDetails';
+$pageName = 'orderHistory';
 
-$sql = "SELECT `order_sid`, `member_sid`, `created_at`, `total`, `order_status` FROM `order-history` WHERE 1";
+$sql = "SELECT * FROM `order-history`";
 
 $stmt = $pdo->prepare($sql)->fetchAll();
+$rows = [];
+
+if ($totalRows > 0) {
+    if ($page < 1) {
+        header('Location: ?page = 1');
+        exit;
+    }
+    if ($page > $totalPages) {
+        header('Location: ?page=' . $totalPages);
+        exit;
+    }
+    $sql = sprintf("SELECT * FROM `product-list` ORDER BY `product_sid` LIMIT %s, %s", ($page - 1) * $perPage, $perPage);
+
+    $rows = $pdo->query($sql)->fetchAll();
+}
+
 ?>
 <?php
 include __DIR__ . '/parts/html-head.php'; ?>
@@ -21,6 +37,7 @@ include __DIR__ . '/parts/nav-bar-admin.php'; ?>
                             <i class="fa-solid fa-trash"></i>
                         </th>
                         <th scope="col">order_sid</th>
+                        <th scope="col">order_num</th>
                         <th scope="col">member_sid</th>
                         <th scope="col">created_at</th>
                         <th scope="col">total</th>
@@ -39,6 +56,7 @@ include __DIR__ . '/parts/nav-bar-admin.php'; ?>
                                 </a>
                             </td>
                             <td><?= $r['order_sid'] ?></td>
+                            <td><?= $r['order_num'] ?></td>
                             <td><?= $r['member_sid'] ?></td>
                             <td><?= $r['created_at'] ?></td>
                             <td><?= $r['total'] ?></td>
