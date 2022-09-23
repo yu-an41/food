@@ -1,12 +1,9 @@
 <?php
-include __DIR__ . '/parts/connect_db.php';
+require __DIR__ . '/parts/connect_db.php';
 $pageName = 'list';
 
 $perPage = 10;
 $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
-
-// $qsp = [];
-//query string parameter
 
 $t_sql = "SELECT COUNT(1) FROM `product-list`";
 $totalRows = $pdo->query($t_sql)->fetch(PDO::FETCH_NUM)[0];
@@ -40,7 +37,7 @@ if ($totalRows > 0) {
 include __DIR__ . '/parts/html-head.php'; ?>
 <?php
 include __DIR__ . '/parts/nav-bar-no-admin.php'; ?>
-<form id="form1">
+<form id="form1" class="d-none">
     <input id="sid" name="sid" type="text">
     <input id="qty" name="qty" type="text">
 </form>
@@ -70,6 +67,12 @@ include __DIR__ . '/parts/nav-bar-no-admin.php'; ?>
                 </ul>
             </nav>
         </div>
+        <div class="col">
+            <a class="btn btn-success" href="01-cart.php">
+                <i class="fa-solid fa-cart-shopping"></i>
+                我的購物車
+            </a>
+        </div>
     </div>
     <div class="row d-flex flex-row justify-content-start align-content-between flex-wrap">
         <?php foreach ($rows as $r) : ?>
@@ -86,7 +89,7 @@ include __DIR__ . '/parts/nav-bar-no-admin.php'; ?>
                                     <option value="<?= $i ?>"><?= $i ?></option>
                                 <? endfor; ?>
                             </select>
-                            <button class="btn btn-success add-to-cart-btn" data-sid="<?= $r['product_sid'] ?>" onclick="addToCart(event)">
+                            <button class="btn btn-success" data-sid="<?= $r['product_sid'] ?>" onclick="addToCart(event)">
                                 <i class="fa-solid fa-cart-shopping"></i>
                             </button>
                         </div>
@@ -121,13 +124,8 @@ include __DIR__ . '/parts/scripts.php'; ?>
             .then(obj => {
                 console.log(obj);
             })
+        alert('商品已加入購物車！');
     }
-
-    // btn.click(function() {
-    //     const sid = $(this).closest('.product-unit').attr('data-sid');
-    //     const qty = $(this).closest('.product-unit').find('.qty').val();
-
-    // })
 </script>
 <?php
 include __DIR__ . '/parts/html-foot.php'; ?>

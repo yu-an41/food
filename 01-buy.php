@@ -43,9 +43,9 @@ foreach ($_SESSION['cart'] as $k => $v) {
     $stmt->execute([
         $order_num,
         $v['product_sid'],
-        $v['product_price'],
+        $v['product_name'],
         $v['qty'],
-        $total
+        $v['product_price'] * $v['qty']
     ]);
 }
 

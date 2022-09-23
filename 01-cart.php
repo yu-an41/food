@@ -1,5 +1,5 @@
 <?php
-include __DIR__ . '/parts/connect_db.php';
+require __DIR__ . '/parts/connect_db.php';
 $pageName = 'cart';
 
 ?>
@@ -19,6 +19,10 @@ include __DIR__ . '/parts/nav-bar-no-admin.php'; ?>
             購物車內沒有商品
         </div>
     <?php else : ?>
+        <form id="formCart">
+            <input type="text" name="sid" id="sid">
+            <!-- <input type="text" name="qty" id="qty"> -->
+        </form>
         <div class="row">
             <div class="col">
                 <table class="table table-striped table-bordered cart-table">
@@ -45,7 +49,7 @@ include __DIR__ . '/parts/nav-bar-no-admin.php'; ?>
                                 <td><?= $v['product_name'] ?></td>
                                 <td><?= $v['product_price'] ?></td>
                                 <td>
-                                    <select class="w-75 form-select qty" onchange="updateItem(event)">
+                                    <select class="w-75 form-select qty">
                                         <?php for ($i = 1; $i <= 5; $i++) : ?>
                                             <option value="<?= $i ?>" <?= $i == $v['qty'] ? 'selected' : '' ?>>
                                                 <?= $i ?></option>
@@ -56,7 +60,7 @@ include __DIR__ . '/parts/nav-bar-no-admin.php'; ?>
                                     <?= $v['product_price'] * $v['qty'] ?>
                                 </td>
                                 <td>
-                                    <a href="javascript: " onclick="removeItem(event)">
+                                    <a href="javascript: " onclick="removeItem(event)" class="btn btn-warning">
                                         <i class="fa-solid fa-trash"></i>
                                     </a>
                                 </td>
@@ -81,65 +85,25 @@ include __DIR__ . '/parts/nav-bar-no-admin.php'; ?>
 <?php
 include __DIR__ . '/parts/scripts.php'; ?>
 <script>
-    // const dollorCommas = function(n) {
-    //     return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-    // };
+    function removeItem(event) {
+        const sid = document.querySelector('#sid');
+        // const qty = document.querySelector('#qty');
+        console.log(event.currentTarget);
+        // const mySid = event.currentTarget.parentNode.querySelector('#sid').getAttribute('data-sid');
+        // sid.value = mySid;
+        // console.log(mySid);
 
-    // function removeItem(event) {
-    //     const tr = $(event.currentTarget).closest('tr');
-    //     const sid = tr.attr('data-sid');
+        const fd = new FormData(document.formCart);
 
-    //     $.get(
-    //         '01-handle-cart.php', {
-    //             sid
-    //         },
-    //         function(data) {
-    //             console.log(data);
-    //             showCartCount(data);
-    //             tr.remove();
-
-    //             updatePrices();
-    //         },
-    //         'json');
-    // }
-
-    // function updateItem(event) {
-    //     const sid = $(event.currentTarget).closest('tr').attr('data-sid');
-    //     const qty = $(event.currentTarget).val();
-
-    //     $.get(
-    //         '01-handle-cart.php', {
-    //             sid,
-    //             qty
-    //         },
-    //         function(data) {
-    //             console.log(data);
-    //             showCartCount(data);
-
-    //             updatePrices();
-    //         },
-    //         'json');
-    // }
-
-    // function updatePrices() {
-    //     let total = 0;
-
-    //     $('.cart-item').each(function() {
-    //         const tr = $(this);
-    //         const td_price = tr.find('product_price');
-    //         const td_sub = tr.find('.sub-total');
-
-    //         const price = +td_price.attr('data-val');
-    //         const qty = +tr.find('qty').val();
-
-    //         td_price.html('$ ' + dollorCommas(price));
-    //         td_sub.html('$ ' + dollorCommas(price) * qty);
-    //         total += price * qty;
-
-    //     });
-    //     $('#total-price').html('$ ' + dollorCommas(total));
-    // }
-    // updatePrices();
+        fetch('01-handle-cart.php', {
+                metho: 'POST',
+                body: fd
+            })
+            .then(r => r.json())
+            .then(obj => {
+                console.log(obj);
+            })
+    }
 </script>
 <?php
 include __DIR__ . '/parts/html-foot.php'; ?>
