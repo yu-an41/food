@@ -1,4 +1,3 @@
-
 <?php include __DIR__ . '/parts/connect_db.php';
 $pageName = 'list';
 
@@ -39,10 +38,10 @@ $output = [
 ?>
 
 <?php include __DIR__ . '/parts/html-head.php'; ?>
-<?php include __DIR__ . '/parts/navbar.php'; ?>
+<?php include __DIR__ . '/parts/nav-bar-admin.php'; ?>
 <div class="container">
-    <div class="row">
-        <div class="col">
+    <div class="row ">
+        <div class="col h-100">
             <nav aria-label="Page navigation example">
                 <ul class="pagination">
                     <li class="page-item <?= $page == 1 ? 'disabled' : '' ?>">
@@ -72,6 +71,9 @@ $output = [
                 </ul>
             </nav>
         </div>
+        <div class="col h-100 d-flex flex-row justify-content-end">
+            <a style="height: 40px;" href="06-insert-form.php" class="btn btn-primary">新增活動</a>
+        </div>
     </div>
     <div class="row">
         <div class="col">
@@ -96,10 +98,9 @@ $output = [
                 <tbody>
                     <?php foreach ($rows as $r) : ?>
                         <tr>
-                            <td><a href="delete.php?sid=<?= $r['sid'] ?>"
-                            onclick="return confirm('確定要刪除編號為<?= $r['sid'] ?>的資料嗎?')">
-                            <i class="fa-solid fa-trash-can"></i>
-                            </a></td>
+                            <td><a href="06-delete.php?sid=<?= $r['sid'] ?>" onclick="return confirm('確定要刪除編號為<?= $r['sid'] ?>的資料嗎?')">
+                                    <i class="fa-solid fa-trash-can"></i>
+                                </a></td>
                             <td><?= $r['sid'] ?></td>
                             <td><img src="./uploads/<?= $r['images'] ?>" style="width: 300px;" alt=""></td>
                             <td><?= $r['name'] ?></td>
@@ -111,9 +112,9 @@ $output = [
                             <td><?= $r['host'] ?></td>
                             <td><?= $r['price'] ?></td>
                             <td><?= $r['created_at'] ?></td>
-                            <td><a href="edit-form.php?sid=<?= $r['sid'] ?>">
-                            <i class="fa-solid fa-pen-to-square"></i>
-                            </a></td>
+                            <td><a href="06-edit-form.php?sid=<?= $r['sid'] ?>">
+                                    <i class="fa-solid fa-pen-to-square"></i>
+                                </a></td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
@@ -125,13 +126,13 @@ $output = [
 <?php include __DIR__ . '/parts/scripts.php'; ?>
 <script>
     const table = document.querySelector('table');
-    table.addEventListener('click',function(event){
+    table.addEventListener('click', function(event) {
         const t = event.target;
         console.log(event.target);
-        if(t.classList.contains('fa-trash-can')){
+        if (t.classList.contains('fa-trash-can')) {
             t.closest('tr').remove();
         }
-        if(t.classList.contains('fa-pen-to-square')){
+        if (t.classList.contains('fa-pen-to-square')) {
             console.log(
                 t.closest('tr').querySelectorAll('td')[2].innerHTML
             );
