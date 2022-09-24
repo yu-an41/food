@@ -56,7 +56,7 @@ if (!isset($_SESSION)) {
                             <a class="nav-link"><?= $_SESSION['user']['account'] ?></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="logout-user.php">登出</a>
+                            <a class="nav-link" id="logOut" onclick="Logout()">登出</a>
                         </li>
                     <?php endif; ?>
                 </ul>
@@ -65,3 +65,13 @@ if (!isset($_SESSION)) {
         </div>
     </nav>
 </div>
+
+<script>
+    // href="logout-user.php"
+    function Logout() {
+        confrim('確定要登出嗎?');
+        location.href = "logout-user.php";
+        // const logOut = document.querySelector('#logOut');
+        // logOut.addEventListener
+    }
+</script>

@@ -56,7 +56,8 @@ if (!isset($_SESSION)) {
                             <a class="nav-link"><?= empty($_SESSION['member']['nickname']) ? $_SESSION['member']['forename'] : $_SESSION['member']['nickname'] ?></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="05-mb_logout.php">登出</a>
+                            <a class="nav-link" style="cursor: pointer;" onclick="Logout()">登出</a>
+                            <!-- <a class="nav-link" style="cursor: pointer;" href="05-mb_logout.php" onclick="return confirm('確定要登出嗎?')">登出</a> -->
                         </li>
                     <?php endif; ?>
                 </ul>
@@ -65,3 +66,14 @@ if (!isset($_SESSION)) {
         </div>
     </nav>
 </div>
+
+<script>
+    function Logout() {
+
+        const yes = confirm('確定要登出嗎?');
+
+        if (yes) {
+            location.href = "05-mb_logout.php";
+        }
+    }
+</script>
