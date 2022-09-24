@@ -5,7 +5,8 @@ $pageName = 'orderDetails';
 $perPage = 5;
 $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
 
-$od_sql = "SELECT count(1) FROM `order-details`";
+$od_sql = "SELECT COUNT(1) FROM `order-details`";
+
 $totalRows = $pdo->query($od_sql)->fetch(PDO::FETCH_NUM)[0];
 
 $totalPages = ceil($totalRows / $perPage);
@@ -39,7 +40,13 @@ include __DIR__ . '/parts/html-head.php'; ?>
 include __DIR__ . '/parts/nav-bar-admin.php'; ?>
 <div class="container">
     <div class="row">
-        <h4 class="text-center mb-3">歷史訂單一覽</h4>
+        <h4 class="text-center mb-3">訂單明細一覽</h4>
+    </div>
+    <div class="row d-flex flex-row-reverse mb-3">
+        <div class="col-lg-6 d-flex flex-row justify-content-end">
+            <a class="btn btn-success <?= $pageName == 'orderHistory' ? 'd-none' : '' ?>" href="01-order-history-admin.php">訂單一覽</a>
+            <a class="btn btn-success <?= $pageName == 'orderDetails' ? 'd-none' : '' ?>" href="01-order-details-admin.php">訂單明細</a>
+        </div>
     </div>
     <div class="row">
         <div class="col">
@@ -76,8 +83,10 @@ include __DIR__ . '/parts/nav-bar-admin.php'; ?>
                             <i class="fa-solid fa-trash"></i>
                         </th>
                         <th scope="col">order_num</th>
-                        <th scope="col">member_sid</th>
                         <th scope="col">created_at</th>
+                        <th scope="col">product_sid</th>
+                        <th scope="col">product_name</th>
+                        <th scope="col">quantity</th>
                         <th scope="col">unit_total</th>
                         <th scope="col">
                             <i class="fa-solid fa-pen-to-square"></i>
@@ -93,9 +102,11 @@ include __DIR__ . '/parts/nav-bar-admin.php'; ?>
                                 </a>
                             </td>
                             <td><?= $r['order_num'] ?></td>
-                            <td><?= $r['member_sid'] ?></td>
                             <td><?= $r['created_at'] ?></td>
-                            <td><?= $r['total'] ?></td>
+                            <td><?= $r['product_sid'] ?></td>
+                            <td><?= $r['product_name'] ?></td>
+                            <td><?= $r['quantity'] ?></td>
+                            <td><?= $r['total_price'] ?></td>
                             <td>
                                 <a href="#">
                                     <i class="fa-solid fa-pen-to-square"></i>

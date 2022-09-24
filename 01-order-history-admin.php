@@ -41,6 +41,12 @@ include __DIR__ . '/parts/nav-bar-admin.php'; ?>
     <div class="row">
         <h4 class="text-center mb-3">歷史訂單一覽</h4>
     </div>
+    <div class="row d-flex flex-row-reverse mb-3">
+        <div class="col-lg-6 d-flex flex-row justify-content-end">
+            <a class="btn btn-success <?= $pageName == 'orderHistory' ? 'd-none' : '' ?>" href="01-order-history-admin.php">訂單一覽</a>
+            <a class="btn btn-success <?= $pageName == 'orderDetails' ? 'd-none' : '' ?>" href="01-order-details-admin.php">訂單明細</a>
+        </div>
+    </div>
     <div class="row">
         <div class="col">
             <nav aria-label="Page navigation example">
