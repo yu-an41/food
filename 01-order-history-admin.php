@@ -2,6 +2,11 @@
 include __DIR__ . '/parts/connect_db.php';
 $pageName = 'orderHistory';
 
+// if (!empty($_SESSION['admin'])) {
+//     header('Location: login-form-admin.php');
+//     exit;
+// }
+
 $perPage = 5;
 $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
 
@@ -110,7 +115,7 @@ include __DIR__ . '/parts/nav-bar-admin.php'; ?>
                             <td><?= $r['total'] ?></td>
                             <td><?= $r['order_status'] ?></td>
                             <td>
-                                <a href="#">
+                                <a href="01-edit-order-history.php?order_sid=<?= $r['order_sid'] ?>">
                                     <i class="fa-solid fa-pen-to-square"></i>
                                 </a>
                             </td>
@@ -127,8 +132,8 @@ include __DIR__ . '/parts/scripts.php'; ?>
     const table = document.querySelector('table');
 
     function delete_it(order_num) {
-        if (confirm(`確定要刪除訂單編號為 ${order_num} 的明細資料嗎?`)) {
-            location.href = `delete.php?order_num= ${order_num}`;
+        if (confirm(`確定要刪除編號為 ${order_num} 的訂單資料嗎?`)) {
+            location.href = `01-delete-order-history.php?order_num=${order_num}`;
         }
     }
 </script>
