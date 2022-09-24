@@ -111,7 +111,9 @@ $output = [
                             <td><?= $r['sid'] ?></td>
                             <td><?= $r['shop_name'] ?></td>
                             <td>
-                                <img src="./img/<?= $r['product_picture'] ?>" alt="" style="width:150px;">
+                                <div class="contanier" style="width:150px; height:180px; ">
+                                    <img src="./img/<?= $r['product_picture'] ?>" alt="" style="width:100%; height:100%;object-fit:cover; overflow:hidden;">
+                                </div>
                             </td>
                             <td><?= $r['product_name'] ?></td>
                             <td><?= $r['product_categories'] ?></td>
@@ -120,7 +122,7 @@ $output = [
                             <td><?= $r['shop_deadline'] ?></td>
                             <!-- <td><?= $r['created_at'] ?></td> -->
                             <td>
-                                <a href="edit-form.php?sid=<?= $r['sid'] ?>">
+                                <a href="04-edit-form.php?sid=<?= $r['sid'] ?>">
                                     <i class="fa-solid fa-pen-to-square"></i>
                                 </a>
                             </td>
