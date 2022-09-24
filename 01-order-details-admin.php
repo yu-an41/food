@@ -88,9 +88,6 @@ include __DIR__ . '/parts/nav-bar-admin.php'; ?>
                         <th scope="col">product_name</th>
                         <th scope="col">quantity</th>
                         <th scope="col">unit_total</th>
-                        <th scope="col">
-                            <i class="fa-solid fa-pen-to-square"></i>
-                        </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -107,11 +104,6 @@ include __DIR__ . '/parts/nav-bar-admin.php'; ?>
                             <td><?= $r['product_name'] ?></td>
                             <td><?= $r['quantity'] ?></td>
                             <td><?= $r['total_price'] ?></td>
-                            <td>
-                                <a href="#">
-                                    <i class="fa-solid fa-pen-to-square"></i>
-                                </a>
-                            </td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
