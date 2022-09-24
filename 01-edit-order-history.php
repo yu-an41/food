@@ -1,23 +1,25 @@
 <?php
-// require __DIR__ . '/parts/admin-required.php';
-// if (!isset($_SESSION['admin'])) {
-//     header('Location: login-form-admin.php');
-// }
+require __DIR__ . '/parts/admin-required.php';
+require __DIR__ . '/parts/connect_db.php';
+
+if (!isset($_SESSION['admin'])) {
+    header('Location: login-form-admin.php');
+}
 $pageName = 'orderEdit';
 
 $o_sid = isset($_GET['order_sid']) ? intval($_GET['order_sid']) : 0;
-// if (empty($o_sid)) {
-//     header('Location: 01-order-history-admin.php');
-//     exit;
-// }
+if (empty($o_sid)) {
+    header('Location: 01-order-history-admin.php');
+    exit;
+}
 
 $sql = "SELECT * FROM `order-history` WHERE `order_sid` = $o_sid";
-// $r = $pdo->query($sql)->fetch();
+$r = $pdo->query($sql)->fetch();
 
-// if (empty($r)) {
-//     header('Location: 01-oder-history-admin.php');
-//     exit;
-// }
+if (empty($r)) {
+    header('Location: 01-oder-history-admin.php');
+    exit;
+}
 ?>
 <?php
 include __DIR__ . '/parts/html-head.php'; ?>
