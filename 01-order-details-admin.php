@@ -94,7 +94,7 @@ include __DIR__ . '/parts/nav-bar-admin.php'; ?>
                     <?php foreach ($rows as $r) : ?>
                         <tr>
                             <td>
-                                <a href="javascript: delete_it(<?= $r['order_sid'] ?>)">
+                                <a href="javascript: delete_it(<?= $r['order_num'] ?>)">
                                     <i class="fa-solid fa-trash"></i>
                                 </a>
                             </td>
@@ -118,7 +118,7 @@ include __DIR__ . '/parts/scripts.php'; ?>
 
     function delete_it(order_details_sid) {
         if (confirm(`確定要刪除編號為 ${order_details_sid} 的訂單明細資料嗎?`)) {
-            location.href = `delete.php?order_details_sid= ${order_details_sid}`;
+            location.href = `01-delete-order-details.php?order_details_sid= ${order_details_sid}`;
         }
     }
 </script>
