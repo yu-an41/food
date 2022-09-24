@@ -5,8 +5,11 @@ $pageName = 'product-insert';
 
 
 $sql = "SELECT * FROM `food_category`";
+
 $rows = $pdo->query($sql)->fetchALL();
+
 ?>
+
 <?php require __DIR__ . '/parts/html-head.php'; ?>
 <?php include __DIR__ . '/parts/nav-bar-admin.php'; ?>
 <div class="container">
@@ -21,15 +24,22 @@ $rows = $pdo->query($sql)->fetchALL();
                             <label for="picture" class="form-label"></label>
                             <input type="file" class="form-control" id="picture" name="picture" accept="image/png,image/jpeg">
                         </div>
-                       <div class="mb-3"><input type="text" id="shop_list_sid" name="shop_list_sid" ></div>
+
                         <div class="mb-3">
                             <label for="price" class="shop_name">店家名稱</label>
-                            <input type="text" class="product_name  form-control" id="shop_name" name="shop_name">
+                            <input type="text" class="product_name  form-control" id="shop_name" name="shop_name" >
                         </div>
+
+                        <div class="mb-3">
+                            <label for="price" class="shop_name">店家名稱</label>
+                            <input type="text" class="product_name  form-control" id="shop_name" name="shop_name" <?= $r['shop_name'] ?>>
+                        </div>
+
                         <div class="mb-3">
                             <label for="price" class="form-label">商品名</label>
                             <input type="text" class="product_name form-control" id="product_name" name="product_name">
                         </div>
+                        <!-- 商品類別 -->
                         <div class="mb-3">
                         <label for="product_categories" class="form-label">商品類別</label>
                           <select name="product_categories" id="product_categories">
@@ -39,10 +49,10 @@ $rows = $pdo->query($sql)->fetchALL();
                         <?php  endforeach; ?>
                           </select>
                         </div>
+                        
                         <div class="mb-3">
                         <label for="product_description" class="product_description">商品敘述</label>
-                            <textarea class="form-control" name="product_description" id="product_description" 
-                            cols="50" rows="4"></textarea>
+                            <textarea class="form-control" name="product_description" id="product_description" cols="50" rows="4"></textarea>
                         </div>
                         <div class="mb-3">
                             <label for="price" class="form-label">定價</label>
