@@ -26,13 +26,8 @@ $rows = $pdo->query($sql)->fetchALL();
                         </div>
 
                         <div class="mb-3">
-                            <label for="price" class="shop_name">店家名稱</label>
-                            <input type="text" class="product_name  form-control" id="shop_name" name="shop_name" >
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="price" class="shop_name">店家名稱</label>
-                            <input type="text" class="product_name  form-control" id="shop_name" name="shop_name" <?= $r['shop_name'] ?>>
+                            <label for="shop_name" class="shop_name">店家名稱</label>
+                            <input type="text" class="product_name  form-control" id="shop_name" name="shop_name" value="<?= $r['shop_name'] ?>">
                         </div>
 
                         <div class="mb-3">
