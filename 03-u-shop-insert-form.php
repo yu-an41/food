@@ -15,65 +15,58 @@ $pageName = 'shop-insert';
                     <img src="" alt="" id="shop_img" style="width: 300px;">
                     <form name="form1" onsubmit="checkForm(); return false;">
                         <div class="mb-3">
-                            <label for="shop_cover" class="form-label">店家封面</label>
+                            <label for="shop_cover" class="form-label">店家封面<span style="color:red;font-size:14px;">*必填</span></label>
                             <input type="file" class="form-control" id="shop_cover" name="shop_cover" accept="image/png,image/jpeg">
-                            <div class="recover" style="color:red"></div>
                         </div>
                         <div class="mb-3">
-                            <label for="shop_email" class="form-label">帳號信箱</label>
+                            <label for="shop_email" class="form-label">帳號信箱<span style="color:red;font-size:14px;">*必填</span></label>
                             <input type="email" class="form-control" id="shop_email" name="shop_email">
-                            <div class="remail" style="color:red"></div>
                         </div>
                         <div class="mb-3">
-                            <label for="shop_password" class="form-label">店家密碼</label>
+                            <label for="shop_password" class="form-label">店家密碼<span style="color:red;font-size:14px;">*必填</span><i class="fa-solid fa-eye-slash" id="eye"></i></label>
                             <input type="password" class="form-control" id="shop_password" name="shop_password">
-                            <div class="repw" style="color:red"></div>
                         </div>
                         <div class="mb-3">
-                            <label for="shop_name" class="form-label">店家名稱</label>
+                            <label for="shop_name" class="form-label">店家名稱<span style="color:red;font-size:14px;">*必填</span></label>
                             <input type="text" class="form-control" id="shop_name" name="shop_name">
-                            <div class="rename" style="color:red"></div>
                         </div>
                         <div class="mb-3">
-                            <label for="shop_phone" class="form-label">店家電話</label>
+                            <label for="shop_phone" class="form-label">店家電話<span style="color:red;font-size:14px;">*必填</span></label>
                             <input type="text" class="form-control" id="shop_phone" name="shop_phone">
-                            <div class="rephone" style="color:red"></div>
                         </div>
                         <div class="mb-3">
-                            <label for="address" class="form-label">店家地址</label>
+                            <label for="address" class="form-label">店家地址<span style="color:red;font-size:14px;">*必填</span></label>
                             <select id="selectcity" name="shop_address_city"></select>
                             <select id="selectarea" name="shop_address_area"></select>
                             <input type="text" class="form-control" id="address" name="shop_address_detail">
-                            <div class="readdress" style="color:red"></div>
                         </div>
                         <div class="mb-3 d-flex">
-                            <label for="shop_opentime" class="form-label">開店時間</label><br>
+                            <label for="shop_opentime" class="form-label">開店時間<span style="color:red;font-size:12px;">*必填</span></label><br>
                             <select name="shop_opentime" id="shop_opentime">
                                 <?php for ($i = 5; $i <= 12; $i++) : ?>
                                     <option value="<?= sprintf("%'.02d", $i) ?>:00"><?= sprintf("%'.02d", $i) ?>:00</option>
                                 <?php endfor; ?>
                             </select>
 
-                            <label for="shop_closetime" class="form-label">關店時間</label><br>
+                            <label for="shop_closetime" class="form-label">關店時間<span style="color:red;font-size:12px;">*必填</span></label><br>
                             <select name="shop_closetime" id="shop_closetime">
                                 <?php for ($i = 13; $i <= 24; $i++) : ?>
                                     <option value="<?= sprintf("%'.02d", $i) ?>:00"><?= sprintf("%'.02d", $i) ?>:00</option>
                                 <?php endfor; ?>
                             </select>
 
-                            <label for="shop_deadline" class="form-label">取餐截止時間</label>
+                            <label for="shop_deadline" class="form-label">取餐截止時間<span style="color:red;font-size:12px;">*必填</span></label>
                             <select name="shop_deadline" id="shop_deadline">
                                 <?php for ($i = 13; $i <= 24; $i++) : ?>
-                                    <option value="<?= sprintf("%'.02d", $i) ?>:00"><?= sprintf("%'.02d", $i) ?>:00</option>
+                                    <option value="<?= sprintf("%'.02d", $i) ?>:00"><?= sprintf("%'.02d", $i) ?>:30</option>
                                 <?php endfor; ?>
                             </select>
                         </div>
                         <input type="hidden" class="form-control" id="shop_approved" name="shop_approved" value="0">
                         <div class="mb-3 form-check">
                             <input type="checkbox" class="form-check-input" id="shop_terms" name="shop_terms" value="yes">
-                            <label class="form-check-label" for="shop_terms">同意店家條款</label>
+                            <label class="form-check-label" for="shop_terms">我已閱讀並同意<a href="#">惜食店家條款</a></label>
                         </div>
-                        <br>
                         <button type="submit" class="btn btn-primary">送出</button>
                     </form>
                 </div>
@@ -95,7 +88,22 @@ $pageName = 'shop-insert';
         img.src = URL.createObjectURL(file);
     })
 
-
+    let theeye = document.querySelector("#eye");
+    theeye.addEventListener("click", () => {
+        let t = document.querySelector("#shop_password");
+        // console.log(t);
+        let tvalue = t.getAttribute("type");
+        // console.log(tvalue);
+        if (tvalue == "password") {
+            t.setAttribute("type", "text");
+            theeye.classList.remove("fa-eye-slash");
+            theeye.classList.add("fa-eye");
+        } else {
+            t.setAttribute("type", "password");
+            theeye.classList.remove("fa-eye");
+            theeye.classList.add("fa-eye-slash");
+        }
+    })
 
     let selCity = document.querySelector("#selectcity");
     let selArea = document.querySelector("#selectarea");
