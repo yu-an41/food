@@ -21,13 +21,13 @@ if (!isset($_SESSION)) {
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link <?= $pageName == 'base' ? 'active' : '' ?>" href="basepage.php">首頁</a>
+                        <a class="nav-link <?= $pageName == 'base' ? 'active' : '' ?>" href="00-basepage-admin.php">首頁</a>
                     </li>
                     <li class="nav-item <?= $pageName == 'store' ? 'active' : '' ?>">
                         <a class="nav-link" href="#">商家</a>
                     </li>
                     <li class="nav-item <?= $pageName == 'product' ? 'active' : '' ?>">
-                        <a class="nav-link" href="#">商品</a>
+                        <a class="nav-link" href="04-product-list.php">商品</a>
                     </li>
                     <li class="nav-item <?= $pageName == 'event' ? 'active' : '' ?>">
                         <a class="nav-link" href="#">活動</a>
