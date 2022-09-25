@@ -86,7 +86,7 @@ WHERE sid=?";
 `shop_opentime`=?,
 `shop_closetime`=?,
 `shop_deadline`=?,
-`shop_shop_approved`=?
+`shop_approved`=?
 WHERE sid=?";
 
     $stmt = $pdo->prepare($sql);
