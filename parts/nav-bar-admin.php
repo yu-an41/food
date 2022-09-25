@@ -21,25 +21,28 @@ if (!isset($_SESSION)) {
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link <?= $pageName == 'baseAdmin' ? 'active' : '' ?>" href="basepage-admin.php">首頁</a>
+                        <a class="nav-link <?= $pageName == 'baseAdmin' ? 'active' : '' ?>" href="00-basepage-admin.php">首頁</a>
                     </li>
                     <li class="nav-item ">
-                        <a class="nav-link <?= $pageName == 'member' ? 'active' : '' ?>" href="#">一般會員</a>
+                        <a class="nav-link <?= $pageName == 'mb_list' ? 'active' : '' ?>" href="05-mb_list.php">一般會員</a>
                     </li>
                     <li class="nav-item ">
                         <a class="nav-link <?= $pageName == 'shop-list' ? 'active' : '' ?>" href="03-shop-list.php">店家</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link <?= $pageName == 'product' ? 'active' : '' ?>" href="#">商品</a>
+                    <li class="nav-item <?= $pageName == 'store' ? 'active' : '' ?>">
+                        <a class="nav-link" href="#">商家</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link <?= $pageName == 'event' ? 'active' : '' ?>" href="#">活動</a>
+                        <a class="nav-link <?= $pageName == 'product' ? 'active' : '' ?>" href="04-product-list.php">商品</a>
                     </li>
-                    <li class="nav-item ">
+                    <li class="nav-item">
+                        <a class="nav-link <?= $pageName == 'event' ? 'active' : '' ?>" href="06-list.php">活動</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link <?= $pageName == 'forum' ? 'active' : '' ?>" href="#">論壇</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link <?= $pageName == 'cart' ? 'active' : '' ?>" href="#">
+                    <li class="nav-item <?= $pageName == 'cart' ? 'active' : '' ?>">
+                        <a class="nav-link" href="cart.php">
                             <i class="fa-solid fa-cart-shopping"></i>
                         </a>
                     </li>

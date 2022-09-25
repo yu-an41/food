@@ -21,7 +21,7 @@ if (!isset($_SESSION)) {
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link <?= $pageName == 'baseNoAdmin' ? 'active' : '' ?>" href="basepage-no-admin.php">首頁</a>
+                        <a class="nav-link <?= $pageName == 'baseNoAdmin' ? 'active' : '' ?>" href="00-basepage-no-admin.php">首頁</a>
                     </li>
                     <li class="nav-item <?= $pageName == 'product' ? 'active' : '' ?>">
                         <a class="nav-link" href="#">商品</a>
@@ -36,27 +36,30 @@ if (!isset($_SESSION)) {
                     </li>
                 </ul>
                 <ul class="navbar-nav mb-2 mb-lg-0">
-                    <?php if (empty($_SESSION['shop'])) : ?>
+                    <?php if (empty($_SESSION['user'])) : ?>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown">註冊</a>
                             <ul class="dropdown-menu dropdown-menu-lg-end">
-                                <li><a class="dropdown-item" href="mb_register.php">會員</a></li>
+                                <li><a class="dropdown-item" href="05-mb_register.php">會員</a></li>
                                 <li><a class="dropdown-item" href="03-u-shop-insert-form.php">店家</a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown">登入</a>
                             <ul class="dropdown-menu dropdown-menu-lg-end">
-                                <li><a class="dropdown-item" href="mb_login.php">會員</a></li>
-                                <li><a class="dropdown-item" href="03-u-shop-login-form.php">店家</a></li>
+                                <li><a class="dropdown-item" href="05-mb_login.php">會員</a></li>
+                                <li><a class="03-u-shop-login-form.php" href="#">商家</a></li>
                             </ul>
                         </li>
                     <?php else : ?>
                         <li class="nav-item">
-                            <a class="nav-link"><?= $_SESSION['shop']['account'] ?></a>
+                            <a class="nav-link"><?= empty($_SESSION['member']['nickname']) ? $_SESSION['member']['forename'] : $_SESSION['member']['nickname'] ?></a>
+                            <!-- 此處待合併 <a class="nav-link"><?= $_SESSION['shop']['account'] ?></a> -->
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="03-u-shop-logout.php">登出</a>
+                            <a class="nav-link" style="cursor: pointer;" onclick="Logout()">登出</a>
+                            <!-- 登出跳轉到其中一頁就好 03-u-shop-logout.php -->
+                            <!-- <a class="nav-link" style="cursor: pointer;" href="05-mb_logout.php" onclick="return confirm('確定要登出嗎?')">登出</a> -->
                         </li>
                     <?php endif; ?>
                 </ul>
@@ -65,3 +68,14 @@ if (!isset($_SESSION)) {
         </div>
     </nav>
 </div>
+
+<script>
+    function Logout() {
+
+        const yes = confirm('確定要登出嗎?');
+
+        if (yes) {
+            location.href = "05-mb_logout.php";
+        }
+    }
+</script>

@@ -6,7 +6,6 @@ $pageName = 'loginAdmin';
 include __DIR__ . '/parts/html-head.php'; ?>
 <?php
 include __DIR__ . '/parts/nav-bar-admin.php'; ?>
-
 <div class="container">
     <div class="row">
         <div class="col-lg-6">
@@ -29,11 +28,9 @@ include __DIR__ . '/parts/nav-bar-admin.php'; ?>
         </div>
     </div>
 </div>
-
-<?php include __DIR__ . '/parts/scripts.php'; ?>
-
+<?php
+include __DIR__ . '/parts/scripts.php'; ?>
 <script>
-
     function checkForm() {
         const fd = new FormData(document.formAdminLogin);
 
@@ -51,6 +48,6 @@ include __DIR__ . '/parts/nav-bar-admin.php'; ?>
                 }
             })
     }
-
 </script>
-<?php include __DIR__ . '/parts/html-foot.php'; ?>
+<?php
+include __DIR__ . '/parts/html-foot.php'; ?>
