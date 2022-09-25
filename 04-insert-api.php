@@ -54,7 +54,6 @@ $stmt = $pdo->prepare($sql);
 try {
     $stmt->execute([
         $_POST['shop_list_sid'],
-        // './img/'. $filename,
         $filename,
         $_POST['product_name'],
         $_POST['product_description'],
