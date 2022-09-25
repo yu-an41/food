@@ -1,8 +1,8 @@
 <?php
 require __DIR__ . '/parts/connect_db.php';
 
-// if (empty($_SESSION['user']) or empty($_SESSION['cart'])) {
-//     header('Location: product-list');
+// if (empty($_SESSION['member']) or empty($_SESSION['cart'])) {
+//     header('Location: 01-product-list-cart.php');
 //     exit;
 // }
 
@@ -20,7 +20,7 @@ list($Y, $M, $D, $H, $I, $S) = $date;
 //陣列透過PHP的implode()變成一個字串
 $order_num = implode('', $date);
 
-$member_sid = 2; // 先給一個假的member_sid
+$member_sid = 58; // 先給一個假的member_sid
 $o_sql = "INSERT INTO `order-history`(`created_at`, `total`, `member_sid`, `order_num`) 
     VALUES (NOW(),$total ,$member_sid , $order_num)";
 
