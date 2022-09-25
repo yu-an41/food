@@ -26,7 +26,7 @@ if ($totalRows) {
         "SELECT `food_product`.*, `shop_list`.`shop_name`,`shop_list`.`shop_deadline`, `food_category`.`product_categories`
         FROM `food_product`
         JOIN `shop_list` 
-        ON `food_product`.`sid`=`shop_list`.`sid`
+        ON `food_product`.`shop_list_sid`=`shop_list`.`sid`
         JOIN `food_category` 
         ON `food_product`.`product_categories_sid`=`food_category`.`sid` 
         ORDER BY `food_product`.`sid` ASC LIMIT %s, %s",
@@ -93,7 +93,8 @@ $output = [
                         <th scope="col">惜食類別</th>
                         <th scope="col">定價</th>
                         <th scope="col">折數</th>
-                        <th scope="col">取餐時間</th>
+                        <th scope="col">取餐截止時間</th>
+                        <th scope="col">惜食狀態</th>
                         <!-- <th scope="col">建立時間</th> -->
                         <th scope="col">
                             <i class="fa-solid fa-pen-to-square"></i>
@@ -120,6 +121,7 @@ $output = [
                             <td><?= $r['unit_price'] ?></td>
                             <td><?= $r['sale_price'] ?></td>
                             <td><?= $r['shop_deadline'] ?></td>
+                            <td><?= $r['product_launch'] == 1 ? "上架" : "下架" ?></td>
                             <!-- <td><?= $r['created_at'] ?></td> -->
                             <td>
                                 <a href="04-edit-form.php?sid=<?= $r['sid'] ?>">
