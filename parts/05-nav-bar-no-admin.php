@@ -36,7 +36,7 @@ if (!isset($_SESSION)) {
                     </li>
                 </ul>
                 <ul class="navbar-nav mb-2 mb-lg-0">
-                    <?php if (empty($_SESSION['member'])) : ?>
+                    <?php if (empty($_SESSION['member']) && empty($_SESSION['shop'])) : ?>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle <?= $pageName == 'mb_register' ? 'active' : '' ?>" role="button" data-bs-toggle="dropdown">註冊</a>
                             <ul class="dropdown-menu dropdown-menu-lg-end">
@@ -75,10 +75,8 @@ if (!isset($_SESSION)) {
 <script>
     function Logout() {
 
-        const yes = confirm('確定要登出嗎?');
-
-        if (yes) {
-            location.href = "05-mb_logout.php";
+        if (confirm('確定要登出嗎?')) {
+            location.href = "00-logout-mb-shop.php";
         }
     }
 </script>
