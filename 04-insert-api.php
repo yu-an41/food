@@ -37,6 +37,7 @@ if(empty($ext)){
 $filename = md5($_FILES['picture']['name']. uniqid()). $ext;
 $output['filename'] = $filename;
 
+
 if(!move_uploaded_file(
         $_FILES['picture']['tmp_name'],
         $folder . $filename
@@ -45,15 +46,17 @@ if(!move_uploaded_file(
     echo json_encode($output, JSON_UNESCAPED_UNICODE);
     exit;
 }
+
 $sql = "INSERT INTO `food_product`( 
      `shop_list_sid`,
-     `product_picture`, `product_name`, `product_description`, `product_categories_sid` ,`unit_price`, `sale_price`, `created_at` 
-    ) VALUES (?, ?, ?, ?, ?, ?, ?, NOW())";
+     `product_picture`, `product_name`, `product_description`, `product_categories_sid` ,`unit_price`, `sale_price`, `product_launch`, `created_at` 
+    ) VALUES (?, ?, ?, ?, ?, ?, ?, 0, NOW())";
 $stmt = $pdo->prepare($sql);
 
 try {
     $stmt->execute([
-        $_POST['shop_list_sid'],
+        $_POST['shop_name'],
+        // './img/'. $filename,
         $filename,
         $_POST['product_name'],
         $_POST['product_description'],
