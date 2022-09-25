@@ -4,7 +4,9 @@ require __DIR__ . '/parts/connect_db.php';
 
 $order_num = isset($_GET['order_num']) ? intval($_GET['order_num']) : 0;
 
-$sql = "DELETE FROM `order-history` WHERE `order_num` = ${order_num}";
+$sql =
+    "DELETE FROM `order-history` WHERE `order_num` = ${order_num};
+    DELETE FROM `order-details` WHERE `order_num` = ${order_num}";
 
 $pdo->query($sql);
 
