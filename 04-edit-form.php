@@ -32,13 +32,13 @@ $rows = $pdo->query($sql)->fetchALL();
         <div class="col-lg-6">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">修改商品資料</h5>
+                    <h5 class="card-title">修改惜食資訊</h5>
 
                     <img src="./img/<?= $r['product_picture'] ?>" alt="" id="img" style="width: 300px;">
 
                     <form name="form1" onsubmit="checkForm(); return false;" novalidate>
                         <div class="mb-3">
-                            <label for="picture" class="form-label"></label>
+                            <label for="picture" class="form-label">惜食照</label>
                             <input type="file" class="form-control" id="picture" name="picture" accept="image/png,image/jpeg">
                         </div>
                         <div class="mb-3">
@@ -46,7 +46,7 @@ $rows = $pdo->query($sql)->fetchALL();
                             <input type="hidden" class="form-control" id="sid1" name="sid1" value="<?= ($r['sid']) ?> ">
                         </div>
                         <div class="mb-3">
-                            <label for="product_categories" class="form-label">商品類別</label>
+                            <label for="product_categories" class="form-label">惜食類別</label>
                             <select name="product_categories" id="product_categories">
                                 <?php foreach ($rows as $c) : ?>
                                     <option value="<?= $c['sid'] ?>"><?= $c['product_categories'] ?>
@@ -55,11 +55,11 @@ $rows = $pdo->query($sql)->fetchALL();
                             </select>
                         </div>
                         <div class="mb-3">
-                            <label for="product_name" class="form-label">商品名</label>
+                            <label for="product_name" class="form-label">惜食名稱</label>
                             <input type="text" class="form-control" id="product_name" name="product_name" value="<?= $r['product_name'] ?>">
                         </div>
                         <div class="mb-3">
-                            <label for="product_description" class="fproduct_description">商品敘述</label>
+                            <label for="product_description" class="fproduct_description">惜食敘述</label>
                             <textarea class="form-control" name="product_description" id="product_description" cols="50" rows="4"><?= $r['product_description'] ?></textarea>
                         </div>
                         <div class="mb-3">
@@ -70,7 +70,19 @@ $rows = $pdo->query($sql)->fetchALL();
                             <label for="sale_price" class="form-label">折數</label>
                             <input type="text" class="form-control" id="sale_price" name="sale_price" value="<?= $r['sale_price'] ?>">
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <!-- 上下架 -->
+                        <div>
+                        <input class="form-check-input mb-4" type="radio" name="product_launch" id="enable" value="1" <?= $r['product_launch'] == 1 ? 'checked' : '' ?> onclick="return confirm('是否要上架')">
+                        <label class="form-check-label" for="enable">
+                            上架
+                        </label>
+                        <input class="form-check-input mb-4" type="radio" name="product_launch" id="disable" value="0" <?= $r['product_launch'] == 0 ? 'checked' : '' ?> onclick="return confirm('是否要更改為下架')">
+                        <label class="form-check-label" for="disable">
+                            下架
+                        </label>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">確認送出</button>
                     </form>
                 </div>
             </div>
