@@ -60,7 +60,7 @@ $output = [
         color: #354179;
     }
 </style>
-<?php include __DIR__ . '/parts/nav-bar-no-admin.php'; ?>
+<?php include __DIR__ . '/parts/05-nav-bar-admin.php'; ?>
 
 <div class="container">
 

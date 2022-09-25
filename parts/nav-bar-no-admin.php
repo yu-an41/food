@@ -23,20 +23,18 @@ if (!isset($_SESSION)) {
                     <li class="nav-item">
                         <a class="nav-link <?= $pageName == 'baseNoAdmin' ? 'active' : '' ?>" href="00-basepage-no-admin.php">首頁</a>
                     </li>
-                    <li class="nav-item <?= $pageName == 'product' ? 'active' : '' ?>">
-                        <a class="nav-link" href="#">商品</a>
-                    </li>
-                    <li class="nav-item <?= $pageName == 'event' ? 'active' : '' ?>">
-                        <a class="nav-link" href="#">活動</a>
+                    <li class="nav-item <?= $pageName == 'productCart' ? 'active' : '' ?>">
+                        <!-- 購物車用商品頁連結待確認 -->
+                        <a class="nav-link" href="01-product-list-cart.php">商品</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="cart.php">
+                        <a class="nav-link" href="01-cart.php">
                             <i class="fa-solid fa-cart-shopping"></i>
                         </a>
                     </li>
                 </ul>
                 <ul class="navbar-nav mb-2 mb-lg-0">
-                    <?php if (empty($_SESSION['user'])) : ?>
+                    <?php if (empty($_SESSION['member']) || empty($_SESSION['shop'])) : ?>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown">註冊</a>
                             <ul class="dropdown-menu dropdown-menu-lg-end">
@@ -53,13 +51,13 @@ if (!isset($_SESSION)) {
                         </li>
                     <?php else : ?>
                         <li class="nav-item">
-                            <a class="nav-link"><?= empty($_SESSION['member']['nickname']) ? $_SESSION['member']['forename'] : $_SESSION['member']['nickname'] ?></a>
-                            <!-- 此處待合併 <a class="nav-link"><?= $_SESSION['shop']['account'] ?></a> -->
+                            <a class="nav-link">
+                                <?= empty($_SESSION['member']['nickname']) ? $_SESSION['member']['forename'] : $_SESSION['member']['nickname'] ?>
+                            </a>
+                            <!-- 此處合併TBC <?= $_SESSION['shop']['account'] ?></a> -->
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" style="cursor: pointer;" onclick="Logout()">登出</a>
-                            <!-- 登出跳轉到其中一頁就好 03-u-shop-logout.php -->
-                            <!-- <a class="nav-link" style="cursor: pointer;" href="05-mb_logout.php" onclick="return confirm('確定要登出嗎?')">登出</a> -->
                         </li>
                     <?php endif; ?>
                 </ul>
@@ -72,10 +70,9 @@ if (!isset($_SESSION)) {
 <script>
     function Logout() {
 
-        const yes = confirm('確定要登出嗎?');
-
-        if (yes) {
-            location.href = "05-mb_logout.php";
+        if (confrim('確定要登出嗎?')) {
+            location.href = "00-logout-mb-shop.php";
         }
+
     }
 </script>
