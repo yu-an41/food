@@ -1,5 +1,5 @@
 <?php
-include __DIR__ . '/parts/connect_db.php';
+require __DIR__ . '/parts/connect_db.php';
 $pageName = 'baseAdmin';
 ?>
 <?php

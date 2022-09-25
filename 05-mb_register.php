@@ -294,7 +294,7 @@ $pageName = 'mb_register';
                         })
 
                         // alert('新增成功');
-                        // location.href = '05-basepage-no-admin.php';
+                        // location.href = '00-basepage-no-admin.php';
                     }
                 })
         }

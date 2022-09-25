@@ -24,7 +24,6 @@ if (!isset($_SESSION)) {
                         <a class="nav-link <?= $pageName == 'baseNoAdmin' ? 'active' : '' ?>" href="00-basepage-no-admin.php">首頁</a>
                     </li>
                     <li class="nav-item <?= $pageName == 'productCart' ? 'active' : '' ?>">
-                        <!-- 購物車用商品頁連結待確認 -->
                         <a class="nav-link" href="01-product-list-cart.php">商品</a>
                     </li>
                     <li class="nav-item">
@@ -34,27 +33,30 @@ if (!isset($_SESSION)) {
                     </li>
                 </ul>
                 <ul class="navbar-nav mb-2 mb-lg-0">
-                    <?php if (empty($_SESSION['member']) || empty($_SESSION['shop'])) : ?>
+                    <?php if (empty($_SESSION['member']) && empty($_SESSION['shop'])) : ?>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown">註冊</a>
+                            <a class="nav-link dropdown-toggle <?= ($pageName == 'mb_register')||($pageName == 'shop-insert') ? 'active' : '' ?>" role="button" data-bs-toggle="dropdown">註冊</a>
                             <ul class="dropdown-menu dropdown-menu-lg-end">
                                 <li><a class="dropdown-item" href="05-mb_register.php">會員</a></li>
                                 <li><a class="dropdown-item" href="03-u-shop-insert-form.php">店家</a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown">登入</a>
+                            <a class="nav-link dropdown-toggle <?= ($pageName == 'mb_login')||($pageName == 'loginshop') ? 'active' : '' ?>" role="button" data-bs-toggle="dropdown">登入</a>
                             <ul class="dropdown-menu dropdown-menu-lg-end">
                                 <li><a class="dropdown-item" href="05-mb_login.php">會員</a></li>
                                 <li><a class="dropdown-item" href="03-u-shop-login-form.php">商家</a></li>
                             </ul>
                         </li>
-                    <?php else : ?>
+                    <?php else: ?>
                         <li class="nav-item">
-                            <a class="nav-link">
+                        <?php if (!empty($_SESSION['member'])) : ?>
+                        <a class="nav-link">
                                 <?= empty($_SESSION['member']['nickname']) ? $_SESSION['member']['forename'] : $_SESSION['member']['nickname'] ?>
-                            </a>
-                            <!-- 此處合併TBC <?= $_SESSION['shop']['account'] ?></a> -->
+                        </a>
+                        <?php else: ?>
+                        <a class="nav-link"><?= $_SESSION['shop']['account'] ?></a>
+                        <?php endif; ?>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" style="cursor: pointer;" onclick="Logout()">登出</a>

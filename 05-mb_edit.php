@@ -31,7 +31,7 @@ if (empty($r)) {
 ?>
 
 <?php include __DIR__ . '/parts/html-head.php'; ?>
-<?php include __DIR__ . '/parts/05-nav-bar-admin.php'; ?>
+<?php include __DIR__ . '/parts/nav-bar-admin.php'; ?>
 
 <div class="container">
     <div class="row">
