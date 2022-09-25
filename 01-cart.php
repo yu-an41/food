@@ -19,9 +19,8 @@ include __DIR__ . '/parts/nav-bar-no-admin.php'; ?>
             購物車內沒有商品
         </div>
     <?php else : ?>
-        <form id="formCart" class="d-none">
+        <form id="formCart">
             <input type="text" name="sid" id="sid">
-            <input type="text" name="qty" id="qty">
         </form>
         <div class="row">
             <div class="col">
@@ -49,7 +48,7 @@ include __DIR__ . '/parts/nav-bar-no-admin.php'; ?>
                                 <td><?= $v['product_name'] ?></td>
                                 <td><?= $v['product_price'] ?></td>
                                 <td>
-                                    <select class="w-75 form-select qty" onchange="updateItem(event)">
+                                    <select class="w-75 form-select qty" onchange="location.href=01-buy.php;">
                                         <?php for ($i = 1; $i <= 5; $i++) : ?>
                                             <option value="<?= $i ?>" <?= $i == $v['qty'] ? 'selected' : '' ?>>
                                                 <?= $i ?></option>
