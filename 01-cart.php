@@ -19,7 +19,7 @@ include __DIR__ . '/parts/nav-bar-no-admin.php'; ?>
             購物車內沒有商品
         </div>
     <?php else : ?>
-        <form id="formCart">
+        <form id="formCart" class="d-none">
             <input type="text" name="sid" id="sid">
             <input type="text" name="qty" id="qty">
         </form>
@@ -50,7 +50,7 @@ include __DIR__ . '/parts/nav-bar-no-admin.php'; ?>
                                 <td><?= $v['product_price'] ?></td>
                                 <td>
                                     <select class="w-75 form-select qty" onchange="updateItem(event)">
-                                        <?php for ($i = 1; $i <= 5; $i++) : ?>
+                                        <?php for ($i = 1; $i <= 10; $i++) : ?>
                                             <option value="<?= $i ?>" <?= $i == $v['qty'] ? 'selected' : '' ?>>
                                                 <?= $i ?></option>
                                         <? endfor; ?>
@@ -78,10 +78,10 @@ include __DIR__ . '/parts/nav-bar-no-admin.php'; ?>
                 請先登入會員，再結帳
             </div> -->
         <?php /*else :*/ ?>
-            <a href="01-buy.php" class="btn btn-warning mb-3">結帳</a>
-            <?php /*endif;*/ ?>
-            <br>
-            <a href="01-product-list-cart.php" class="btn btn-success">繼續選購</a>
+        <a href="01-buy.php" class="btn btn-warning mb-3">結帳</a>
+        <?php /*endif;*/ ?>
+        <br>
+        <a href="01-product-list-cart.php" class="btn btn-success">繼續選購</a>
     <? endif; ?>
 </div>
 <?php
@@ -103,7 +103,7 @@ include __DIR__ . '/parts/scripts.php'; ?>
 
         const fd = new FormData(document.querySelector('#formCart'));
 
-        fetch('01-handle-cart.php', {
+        fetch('01-update-cart.php', {
                 method: 'POST',
                 body: fd,
             })
@@ -121,7 +121,7 @@ include __DIR__ . '/parts/scripts.php'; ?>
 
         const fd = new FormData(document.querySelector('#formCart'));
 
-        fetch('01-handle-cart.php', {
+        fetch('01-update-cart.php', {
                 method: 'POST',
                 body: fd,
             })
