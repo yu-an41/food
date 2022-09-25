@@ -9,7 +9,7 @@ include __DIR__ . '/parts/nav-bar-no-admin.php'; ?>
 
 <div class="container">
     <div class="row">
-        <div class="col-lg-6">
+        <div class="col-lg-6 mx-auto">
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">店家登入</h5>

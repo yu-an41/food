@@ -1,4 +1,5 @@
 <?php
+require __DIR__ . '/parts/admin-required.php';
 require __DIR__ . '/parts/connect_db.php';
 $pageName = 'product-list';
 

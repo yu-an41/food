@@ -28,7 +28,7 @@ if (!isset($_SESSION)) {
                         <a class="nav-link" href="01-product-list-cart.php">商品</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="01-cart.php">
+                        <a class="nav-link <?= $pageName == 'cart' ? 'active' : '' ?>" href="01-cart.php">
                             <i class="fa-solid fa-cart-shopping"></i>
                         </a>
                     </li>
@@ -46,7 +46,7 @@ if (!isset($_SESSION)) {
                             <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown">登入</a>
                             <ul class="dropdown-menu dropdown-menu-lg-end">
                                 <li><a class="dropdown-item" href="05-mb_login.php">會員</a></li>
-                                <li><a class="03-u-shop-login-form.php" href="#">商家</a></li>
+                                <li><a class="dropdown-item" href="03-u-shop-login-form.php">商家</a></li>
                             </ul>
                         </li>
                     <?php else : ?>

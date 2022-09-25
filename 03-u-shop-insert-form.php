@@ -8,7 +8,7 @@ $pageName = 'shop-insert';
 
 <div class="container">
     <div class="row">
-        <div class="col-lg-6">
+        <div class="col-lg-6 mx-auto">
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">註冊店家資料</h5>
@@ -150,7 +150,7 @@ $pageName = 'shop-insert';
                 alert(obj.error);
             } else {
                 alert('註冊成功')
-                location.href = 'basepage-no-admin.php';
+                location.href = '00-basepage-no-admin.php';
             }
         })
 

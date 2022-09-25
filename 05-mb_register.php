@@ -3,7 +3,7 @@ $pageName = 'mb_register';
 ?>
 
 <?php include __DIR__ . '/parts/html-head.php'; ?>
-<?php include __DIR__ . '/parts/05-nav-bar-no-admin.php'; ?>
+<?php include __DIR__ . '/parts/nav-bar-no-admin.php'; ?>
 
 <style>
     .error_input {
@@ -290,7 +290,7 @@ $pageName = 'mb_register';
                         document.querySelector('#modal_header').innerHTML = '註冊';
                         document.querySelector('#modal_body').innerHTML = '註冊成功';
                         document.querySelector('#modal_footer').addEventListener('click', () => {
-                            location.href = '05-basepage-no-admin.php';
+                            location.href = '00-basepage-no-admin.php';
                         })
 
                         // alert('新增成功');

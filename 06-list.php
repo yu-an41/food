@@ -1,4 +1,6 @@
-<?php include __DIR__ . '/parts/connect_db.php';
+<?php 
+require __DIR__ . '/parts/admin-required.php';
+require __DIR__ . '/parts/connect_db.php';
 $pageName = 'list';
 
 $perPage = 2; #一頁有幾筆

@@ -4,6 +4,6 @@ if(! isset($_SESSION)){
 }
 
 if(empty($_SESSION['shop'])){
-    header('Location: login-form-admin.php');
+    header('Location: 00-login-form-admin.php');
     exit;
 }

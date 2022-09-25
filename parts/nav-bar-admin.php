@@ -44,14 +44,14 @@ if (!isset($_SESSION)) {
                 <ul class="navbar-nav mb-2 mb-lg-0">
                     <?php if (empty($_SESSION['admin'])) : ?>
                         <li class="nav-item">
-                            <a class="nav-link" href="login-form-admin.php">登入</a>
+                            <a class="nav-link" href="00-login-form-admin.php">登入</a>
                         </li>
                     <?php else : ?>
                         <li class="nav-item">
                             <a class="nav-link"><?= $_SESSION['admin']['account'] ?></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="logout-admin.php">登出</a>
+                            <a class="nav-link" href="00-logout-admin.php">登出</a>
                         </li>
                     <?php endif; ?>
                 </ul>

@@ -1,5 +1,6 @@
 <?php
 require __DIR__ . '/parts/connect_db.php';
+
 $pageName = 'loginAdmin';
 ?>
 <?php
@@ -8,7 +9,7 @@ include __DIR__ . '/parts/html-head.php'; ?>
 include __DIR__ . '/parts/nav-bar-admin.php'; ?>
 <div class="container">
     <div class="row">
-        <div class="col-lg-6">
+        <div class="col-lg-6 mx-auto">
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Admin Login</h5>
@@ -34,7 +35,7 @@ include __DIR__ . '/parts/scripts.php'; ?>
     function checkForm() {
         const fd = new FormData(document.formAdminLogin);
 
-        fetch('login-api-admin.php', {
+        fetch('00-login-api-admin.php', {
                 method: 'POST',
                 body: fd,
             })
@@ -42,7 +43,7 @@ include __DIR__ . '/parts/scripts.php'; ?>
             .then(obj => {
                 console.log(obj);
                 if (obj.success) {
-                    location.href = 'basepage-admin.php';
+                    location.href = '00-basepage-admin.php';
                 } else {
                     alert(obj.error);
                 }

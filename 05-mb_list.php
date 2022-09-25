@@ -1,4 +1,6 @@
-<?php require __DIR__ . '/parts/connect_db.php';
+<?php 
+require __DIR__ . '/parts/admin-required.php';
+require __DIR__ . '/parts/connect_db.php';
 
 $pageName = 'mb_list';
 
@@ -60,7 +62,7 @@ $output = [
         color: #354179;
     }
 </style>
-<?php include __DIR__ . '/parts/05-nav-bar-admin.php'; ?>
+<?php include __DIR__ . '/parts/nav-bar-admin.php'; ?>
 
 <div class="container">
 
