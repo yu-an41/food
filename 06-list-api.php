@@ -1,4 +1,5 @@
-<?php include __DIR__ . '/parts/connect_db.php';
+<?php
+require __DIR__ . '/parts/connect_db.php';
 
 $perPage = 2; #一頁有幾筆
 $page = isset($_GET['page']) ? intval($_GET['page']) : 1;

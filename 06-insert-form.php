@@ -1,4 +1,5 @@
-<?php include __DIR__ . '/parts/connect_db.php';
+<?php
+require __DIR__ . '/parts/connect_db.php';
 $pageName = 'insert';
 
 ?>

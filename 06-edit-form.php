@@ -1,4 +1,5 @@
-<?php include __DIR__ . '/parts/connect_db.php';
+<?php 
+require __DIR__ . '/parts/connect_db.php';
 $pageName = 'edit';
 
 $sid = isset($_GET['sid']) ? intval($_GET['sid']) : 0;

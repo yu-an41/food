@@ -1,4 +1,5 @@
-<?php
+<?php 
+require __DIR__ . '/parts/connect_db.php';
 $pageName = 'mb_register';
 ?>
 

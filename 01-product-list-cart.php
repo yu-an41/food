@@ -1,6 +1,6 @@
 <?php
 require __DIR__ . '/parts/connect_db.php';
-$pageName = 'list';
+$pageName = 'productCart';
 
 $perPage = 10;
 $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
