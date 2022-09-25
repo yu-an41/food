@@ -82,12 +82,13 @@ include __DIR__ . '/parts/nav-bar-admin.php'; ?>
                         <th scope="col">
                             <i class="fa-solid fa-trash"></i>
                         </th>
-                        <th scope="col">order_num</th>
-                        <th scope="col">created_at</th>
-                        <th scope="col">product_sid</th>
-                        <th scope="col">product_name</th>
-                        <th scope="col">quantity</th>
-                        <th scope="col">unit_total</th>
+                        <th scope="col">#</th>
+                        <th scope="col">訂單編號</th>
+                        <th scope="col">時間</th>
+                        <th scope="col">產品編號</th>
+                        <th scope="col">產品名稱</th>
+                        <th scope="col">數量</th>
+                        <th scope="col">小計</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -98,6 +99,7 @@ include __DIR__ . '/parts/nav-bar-admin.php'; ?>
                                     <i class="fa-solid fa-trash"></i>
                                 </a>
                             </td>
+                            <td><?= $r['order_details_sid'] ?></td>
                             <td><?= $r['order_num'] ?></td>
                             <td><?= $r['created_at'] ?></td>
                             <td><?= $r['product_sid'] ?></td>
