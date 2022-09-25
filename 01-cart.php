@@ -21,6 +21,7 @@ include __DIR__ . '/parts/nav-bar-no-admin.php'; ?>
     <?php else : ?>
         <form id="formCart">
             <input type="text" name="sid" id="sid">
+            <input type="text" name="qty" id="qty">
         </form>
         <div class="row">
             <div class="col">
@@ -48,7 +49,7 @@ include __DIR__ . '/parts/nav-bar-no-admin.php'; ?>
                                 <td><?= $v['product_name'] ?></td>
                                 <td><?= $v['product_price'] ?></td>
                                 <td>
-                                    <select class="w-75 form-select qty" onchange="location.href=01-buy.php;">
+                                    <select class="w-75 form-select qty" onchange="updateItem(event)">
                                         <?php for ($i = 1; $i <= 5; $i++) : ?>
                                             <option value="<?= $i ?>" <?= $i == $v['qty'] ? 'selected' : '' ?>>
                                                 <?= $i ?></option>
@@ -77,25 +78,30 @@ include __DIR__ . '/parts/nav-bar-no-admin.php'; ?>
                 請先登入會員，再結帳
             </div> -->
         <?php /*else :*/ ?>
-        <a href="01-buy.php" class="btn btn-warning">結帳</a>
-        <?php /*endif;*/ ?>
+            <a href="01-buy.php" class="btn btn-warning mb-3">結帳</a>
+            <?php /*endif;*/ ?>
+            <br>
+            <a href="01-product-list-cart.php" class="btn btn-success">繼續選購</a>
     <? endif; ?>
 </div>
 <?php
 include __DIR__ . '/parts/scripts.php'; ?>
 <script>
-    const sid = document.querySelector('#sid');
-    
-    function updateItem(event) {
-
+    function updateCart(event) {
+        setTimeout('location.href="01-cart.php", 500');
     }
 
-    function removeItem(event) {
-        const mySid = event.currentTarget.getAttribute('data-sid');
+    const sid = document.querySelector('#sid');
+    const qty = document.querySelector('#qty');
+
+    function updateItem(event) {
+        const mySid = event.currentTarget.parentNode.parentNode.getAttribute('data-sid');
+        const myQty = event.currentTarget.parentNode.querySelector('.form-select').value;
         // console.log(mySid);
         sid.value = mySid;
+        qty.value = myQty;
 
-        const fd = new FormData(document.formCart);
+        const fd = new FormData(document.querySelector('#formCart'));
 
         fetch('01-handle-cart.php', {
                 method: 'POST',
@@ -105,11 +111,25 @@ include __DIR__ . '/parts/scripts.php'; ?>
             .then(obj => {
                 console.log(obj);
             })
-        // location.reload();
-        // function updateCart() {
-        //     location.reload();
-        //     console.log;
-        // }
+        updateCart();
+    }
+
+    function removeItem(event) {
+        const mySid = event.currentTarget.getAttribute('data-sid');
+        // console.log(mySid);
+        sid.value = mySid;
+
+        const fd = new FormData(document.querySelector('#formCart'));
+
+        fetch('01-handle-cart.php', {
+                method: 'POST',
+                body: fd,
+            })
+            .then(r => r.json())
+            .then(obj => {
+                console.log(obj);
+            })
+        updateCart();
     }
 </script>
 <?php

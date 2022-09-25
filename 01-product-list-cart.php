@@ -43,6 +43,7 @@ include __DIR__ . '/parts/nav-bar-no-admin.php'; ?>
 </form>
 <div class="container">
     <div class="row">
+        <h4 class="text-center mb-3">商品一覽</h4>
         <div class="col">
             <nav aria-label="Page navigation example">
                 <ul class="pagination">
