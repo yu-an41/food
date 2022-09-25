@@ -1,5 +1,6 @@
 <?php
-include __DIR__ . '/parts/connect_db.php';
+require __DIR__ . '/parts/admin-required.php';
+require __DIR__ . '/parts/connect_db.php';
 $pageName = 'orderHistory';
 
 // if (!empty($_SESSION['admin'])) {
@@ -86,12 +87,12 @@ include __DIR__ . '/parts/nav-bar-admin.php'; ?>
                         <th scope="col">
                             <i class="fa-solid fa-trash"></i>
                         </th>
-                        <th scope="col">order_sid</th>
-                        <th scope="col">order_num</th>
-                        <th scope="col">member_sid</th>
-                        <th scope="col">created_at</th>
-                        <th scope="col">total</th>
-                        <th scope="col">order_status</th>
+                        <th scope="col">#</th>
+                        <th scope="col">訂單編號</th>
+                        <th scope="col">會員編號</th>
+                        <th scope="col">時間</th>
+                        <th scope="col">總計</th>
+                        <th scope="col">訂單狀態</th>
                         <th scope="col">
                             <i class="fa-solid fa-pen-to-square"></i>
                         </th>
@@ -106,9 +107,7 @@ include __DIR__ . '/parts/nav-bar-admin.php'; ?>
                                 </a>
                             </td>
                             <td><?= $r['order_sid'] ?></td>
-                            <td>
-                                <a href="01-order-details-admin.php"><?= $r['order_num'] ?></a>
-                            </td>
+                            <td><?= $r['order_num'] ?></td>
                             <td><?= $r['member_sid'] ?></td>
                             <!-- 抓不到memebr_sid -->
                             <td><?= $r['created_at'] ?></td>

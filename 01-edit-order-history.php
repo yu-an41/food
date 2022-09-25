@@ -35,7 +35,7 @@ include __DIR__ . '/parts/nav-bar-admin.php'; ?>
             <div class="card">
                 <div class="card-body">
                     <form name="formEdit" onsubmit="checkForm(); return false;" novalidation>
-                        <input type="hidden" name="orderSid" value="<?= $r['order_sid'] ?>">
+                        <input type="text" name="orderSid" value="<?= $r['order_sid'] ?>" class="d-none">
                         <div class="mb-3">
                             <label for="orderNum" class="form-label">Order Number</label>
                             <input type="text" name="orderNum" class="form-control" id="orderNum" value="<?= $r['order_num'] ?>" disabled>
@@ -61,7 +61,7 @@ include __DIR__ . '/parts/nav-bar-admin.php'; ?>
                                 <option <?= $r['order_status'] == '已退款' ? 'selected' : '' ?> value="已退款">已退款</option>
                             </select>
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary">更新訂單狀態</button>
                     </form>
                 </div>
             </div>
@@ -72,6 +72,7 @@ include __DIR__ . '/parts/nav-bar-admin.php'; ?>
 include __DIR__ . '/parts/scripts.php'; ?>
 <script>
     function checkForm() {
+        // console.log(document.formEdit.orderStatus.value);
         const fd = new FormData(document.formEdit);
 
         for (let k of fd.keys()) {

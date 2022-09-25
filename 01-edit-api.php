@@ -11,26 +11,21 @@ $output = [
     'postData' => $_POST,
 ];
 
-if (empty($_POST['oderStatus'])) {
+if (empty($_POST['orderStatus'])) {
     $output['error'] = '未選擇訂單狀態';
     $output['code'] = 400;
     echo json_encode($output, JSON_UNESCAPED_UNICODE);
     exit;
 }
 
-$sql = "UPDATE `order_history` SET `order_status` = ? WHERE `order_sid` = ?";
+$sql = "UPDATE `order-history` SET `order_status` = ? WHERE `order_sid` = ?";
 
 $stmt = $pdo->prepare($sql);
 
-$od = '已付款';
-if ((!$_POST['order_status'] == '已付款') or (!$_POST['order_status'] == '已取貨') or (!$_POST['order_status'] == '退款申請中') or (!$_POST['order_status'] == '已退款')) {
-    $od = $_POST['order_status'];
-}
-
 try {
     $stmt->execute([
-        $_POST['order_sid'],
-        $od,
+        $_POST['orderStatus'],
+        $_POST['orderSid'],
     ]);
 } catch (PDOException $ex) {
     $output['error'] = $ex->getMessage();
