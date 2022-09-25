@@ -90,6 +90,7 @@ include __DIR__ . '/parts/scripts.php'; ?>
                     alert(obj.error);
                 } else {
                     alert('訂單狀態修改成功！');
+                    header('01-order-history-admin.php');
                 }
             })
     }
