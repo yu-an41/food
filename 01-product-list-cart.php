@@ -67,10 +67,9 @@ include __DIR__ . '/parts/nav-bar-no-admin.php'; ?>
                 </ul>
             </nav>
         </div>
-        <div class="col">
-            <a class="btn btn-success" href="01-cart.php">
-                <i class="fa-solid fa-cart-shopping"></i>
-                我的購物車
+        <div class="col-lg-6 d-flex flex-row-reverse mb-2  ">
+            <a class="btn btn-success" href="01-cart.php" style="height: 40px;">
+                <i class="fa-solid fa-cart-shopping"> 我的購物車</i>
             </a>
         </div>
     </div>

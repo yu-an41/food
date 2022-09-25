@@ -109,7 +109,6 @@ include __DIR__ . '/parts/nav-bar-admin.php'; ?>
                             <td><?= $r['order_sid'] ?></td>
                             <td><?= $r['order_num'] ?></td>
                             <td><?= $r['member_sid'] ?></td>
-                            <!-- 抓不到memebr_sid -->
                             <td><?= $r['created_at'] ?></td>
                             <td><?= $r['total'] ?></td>
                             <td><?= $r['order_status'] ?></td>

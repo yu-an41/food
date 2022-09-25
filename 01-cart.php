@@ -19,9 +19,9 @@ include __DIR__ . '/parts/nav-bar-no-admin.php'; ?>
             購物車內沒有商品
         </div>
     <?php else : ?>
-        <form id="formCart">
+        <form id="formCart" class="d-none">
             <input type="text" name="sid" id="sid">
-            <!-- <input type="text" name="qty" id="qty"> -->
+            <input type="text" name="qty" id="qty">
         </form>
         <div class="row">
             <div class="col">
@@ -49,7 +49,7 @@ include __DIR__ . '/parts/nav-bar-no-admin.php'; ?>
                                 <td><?= $v['product_name'] ?></td>
                                 <td><?= $v['product_price'] ?></td>
                                 <td>
-                                    <select class="w-75 form-select qty">
+                                    <select class="w-75 form-select qty" onchange="updateItem(event)">
                                         <?php for ($i = 1; $i <= 5; $i++) : ?>
                                             <option value="<?= $i ?>" <?= $i == $v['qty'] ? 'selected' : '' ?>>
                                                 <?= $i ?></option>
@@ -60,7 +60,7 @@ include __DIR__ . '/parts/nav-bar-no-admin.php'; ?>
                                     <?= $v['product_price'] * $v['qty'] ?>
                                 </td>
                                 <td>
-                                    <a href="javascript: " onclick="removeItem(event)" class="btn btn-warning">
+                                    <a href="javascript: removeItem(<?= $v['product_sid'] ?>)" class="btn btn-warning">
                                         <i class="fa-solid fa-trash"></i>
                                     </a>
                                 </td>
@@ -73,7 +73,7 @@ include __DIR__ . '/parts/nav-bar-no-admin.php'; ?>
         <div class="alert alert-success" role="alert">
             <span>總計：</span id="total-price"> <?= $total ?> <span></span>元
         </div>
-        <?php /*if (empty($_SESSION['user'])) : */ ?>
+        <?php /*if (empty($_SESSION['member'])) :*/ ?>
         <!-- <div class="alert alert-danger" role="alert">
                 請先登入會員，再結帳
             </div> -->
@@ -85,24 +85,34 @@ include __DIR__ . '/parts/nav-bar-no-admin.php'; ?>
 <?php
 include __DIR__ . '/parts/scripts.php'; ?>
 <script>
-    function removeItem(event) {
         const sid = document.querySelector('#sid');
-        // const qty = document.querySelector('#qty');
-        console.log(event.currentTarget);
-        // const mySid = event.currentTarget.parentNode.querySelector('#sid').getAttribute('data-sid');
-        // sid.value = mySid;
-        // console.log(mySid);
+        const qty = document.querySelector('#qty');
+
+    function updateItem(event) {
+
+    }
+    function removeItem(product_sid) {
+        // const mySid = event.currentTarget.parentNode.parentNode.getAttribute('data-sid');
+        const mySid = product_sid;
+        const myQty = 0;
+        //console.log(mySid);
+        sid.value = mySid;
+        qty.value = myQty;
 
         const fd = new FormData(document.formCart);
 
         fetch('01-handle-cart.php', {
-                metho: 'POST',
-                body: fd
+                method: 'POST',
+                body: fd,
             })
             .then(r => r.json())
             .then(obj => {
                 console.log(obj);
             })
+            function updateCart() {
+                location.reload();
+                // console.log;
+            }
     }
 </script>
 <?php
