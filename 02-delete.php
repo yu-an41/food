@@ -6,7 +6,7 @@ $sql = "DELETE FROM official_post WHERE sid = {$sid}";
 
 $pdo->query($sql);
 
-$come_from = '02-forum_list.php';
+$come_from = '02-official_list.php';
 if (!empty($_SERVER['HTTP_REFERER'])) {
     $come_from = $_SERVER['HTTP_REFERER'];
 }
