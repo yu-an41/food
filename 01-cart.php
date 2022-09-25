@@ -59,9 +59,9 @@ include __DIR__ . '/parts/nav-bar-no-admin.php'; ?>
                                     <?= $v['product_price'] * $v['qty'] ?>
                                 </td>
                                 <td>
-                                    <a href="javascript: removeItem(<?= $v['product_sid'] ?>)" class="btn btn-warning">
+                                    <button class="btn btn-warning" data-sid="<?= $v['product_sid'] ?>" onclick="removeItem(event)">
                                         <i class="fa-solid fa-trash"></i>
-                                    </a>
+                                    </button>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
@@ -84,19 +84,16 @@ include __DIR__ . '/parts/nav-bar-no-admin.php'; ?>
 <?php
 include __DIR__ . '/parts/scripts.php'; ?>
 <script>
-        const sid = document.querySelector('#sid');
-        const qty = document.querySelector('#qty');
-
+    const sid = document.querySelector('#sid');
+    
     function updateItem(event) {
 
     }
-    function removeItem(product_sid) {
-        // const mySid = event.currentTarget.parentNode.parentNode.getAttribute('data-sid');
-        const mySid = product_sid;
-        const myQty = 0;
-        //console.log(mySid);
+
+    function removeItem(event) {
+        const mySid = event.currentTarget.getAttribute('data-sid');
+        // console.log(mySid);
         sid.value = mySid;
-        qty.value = myQty;
 
         const fd = new FormData(document.formCart);
 
@@ -108,10 +105,11 @@ include __DIR__ . '/parts/scripts.php'; ?>
             .then(obj => {
                 console.log(obj);
             })
-            function updateCart() {
-                location.reload();
-                // console.log;
-            }
+        // location.reload();
+        // function updateCart() {
+        //     location.reload();
+        //     console.log;
+        // }
     }
 </script>
 <?php
