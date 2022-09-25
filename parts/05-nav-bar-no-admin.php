@@ -53,7 +53,12 @@ if (!isset($_SESSION)) {
                         </li>
                     <?php else : ?>
                         <li class="nav-item">
-                            <a class="nav-link"><?= empty($_SESSION['member']['nickname']) ? $_SESSION['member']['forename'] : $_SESSION['member']['nickname'] ?></a>
+                            <?php if (!empty($_SESSION['member'])) : ?>
+                                <a class="nav-link"><?= empty($_SESSION['member']['nickname']) ? $_SESSION['member']['forename'] : $_SESSION['member']['nickname'] ?>
+                                </a>
+                            <?php else : ?>
+                                <a class="nav-link"><?= $_SESSION['shop']['account'] ?></a>
+                            <?php endif; ?>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" style="cursor: pointer;" onclick="Logout()">登出</a>
