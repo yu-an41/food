@@ -23,6 +23,9 @@ if (!isset($_SESSION)) {
                     <li class="nav-item">
                         <a class="nav-link <?= $pageName == 'baseNoAdmin' ? 'active' : '' ?>" href="00-basepage-no-admin.php">首頁</a>
                     </li>
+                    <li class="nav-item <?= $pageName == 'card' ? 'active' : '' ?>">
+                        <a class="nav-link" href="02-forum_official_card.php">論壇</a>
+                    </li>
                     <li class="nav-item <?= $pageName == 'productCart' ? 'active' : '' ?>">
                         <a class="nav-link" href="01-product-list-cart.php">商品</a>
                     </li>

@@ -32,6 +32,7 @@ if (!isset($_SESSION)) {
                     <li class="nav-item <?= $pageName == 'productCart' ? 'active' : '' ?>">
                         <a class="nav-link" href="04-product-list.php">商品列表</a>
                     </li>
+<<<<<<< HEAD
                     <li class="nav-item">
                         <a class="nav-link <?= $pageName == 'event' ? 'active' : '' ?>" href="06-list.php">活動</a>
                     </li>
@@ -40,6 +41,16 @@ if (!isset($_SESSION)) {
                     </li>
                     <li class="nav-item">
                         <a class="nav-link <?= $pageName == 'orderHistory' ? 'active' : '' ?>" href="01-order-history-admin.php">訂單</a>
+=======
+                    <li class="nav-item <?= $pageName == 'forum' ? 'active' : '' ?>">
+                        <a class="nav-link <?= $pageName == 'product' ? 'active' : '' ?>" href="02-official_list.php">論壇</a>
+                    </li>
+                    <li class="nav-item <?= $pageName == 'cart' ? 'active' : '' ?>">
+                        <a class="nav-link" href="cart.php">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                        </a>
+                    </li>
+>>>>>>> a4ab90ced490be36bcc2572233ac416f0b08a22d
                 </ul>
                 <ul class="navbar-nav mb-2 mb-lg-0">
                     <?php if (empty($_SESSION['admin'])) : ?>
