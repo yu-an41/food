@@ -7,7 +7,7 @@
                         <div class="card-body">
                             <h5 class="card-title"><?= $r['title'] ?></h5>
                             <p class="card-text"><?= $r['content'] ?></p>
-                            <a href="02-official_post.php" class="btn btn-primary">閱讀完整文章</a>
+                            <a href="official_post.php?sid=<?= $r['sid'] ?>" class="btn btn-primary">閱讀完整文章</a>
                         </div>
                     </div>
                 </div>
