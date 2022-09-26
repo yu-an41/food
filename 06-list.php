@@ -3,7 +3,7 @@ require __DIR__ . '/parts/admin-required.php';
 require __DIR__ . '/parts/connect_db.php';
 $pageName = 'list';
 
-$perPage = 2; #一頁有幾筆
+$perPage = 4; #一頁有幾筆
 $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
 
 $t_sql = "SELECT COUNT(1) FROM event_test_1 ";
