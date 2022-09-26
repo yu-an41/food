@@ -1,6 +1,8 @@
-<?php require __DIR__ . '/parts/connect_db.php';
+<?php 
+require __DIR__ . '/parts/connect_db.php';
+
 if (empty($_SESSION['admin'])) {
-    header('Location: login-form-admin.php');
+    header('Location: 00-login-form-admin.php');
 }
 $pageName = 'list';
 $perPage = 5;

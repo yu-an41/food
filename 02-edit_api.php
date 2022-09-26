@@ -22,9 +22,9 @@ $output = [
 if (empty($_FILES['img']['name'])) {
     $sql = "UPDATE `official_post` SET
     `title`=?, 
-     `content`=?, 
-     `hashtag`=? 
-     WHERE sid=?";
+    `content`=?, 
+    `hashtag`=? 
+    WHERE sid=?";
 
     $stmt = $pdo->prepare($sql);
 
@@ -48,7 +48,7 @@ if (empty($_FILES['img']['name'])) {
     `title`=?, 
     `content`=?, 
     `hashtag`=? 
-     WHERE sid=?";
+    WHERE sid=?";
         $output['error'] = '檔案格式錯誤:要jpeg, png';
         echo json_encode($output, JSON_UNESCAPED_UNICODE);
 

@@ -1,4 +1,5 @@
-<?php require __DIR__ . '/parts/connect_db.php';
+<?php 
+require __DIR__ . '/parts/connect_db.php';
 header('Content-Type: application/json');
 //要輸出的陣列，先定義值等於字串或數值
 

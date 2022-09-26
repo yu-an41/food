@@ -1,6 +1,9 @@
-<?php require __DIR__ . '/parts/connect_db.php';
-// if (empty($_SESSION['user'])) {
-//     header('Location: login-form-admin.php');
+<?php 
+require __DIR__ . '/parts/admin-required.php';
+require __DIR__ . '/parts/connect_db.php';
+
+// if (empty($_SESSION['member'])) {
+//     header('Location: 00-login-form-no-admin.php');
 // }
 $pageName = 'card';
 $perPage = 6;

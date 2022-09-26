@@ -10,12 +10,12 @@ $pageName = 'post';
                 <h5 class="card-title" id="title" name="title"><?= $r['content'] ?></h5>
                 <img id="img_div" name="img_div" style="weight:300px;" src="./uploads/<?= $r['img'] ?>">
                 <div id="content" name="content"><?= $r['content'] ?></div>
-                <div class="mb-3">
+                <!-- <div class="mb-3">
                     <label for="content" class="form-label">留言</label>
                     <textarea class="form-control" id="content" name="content" rows="3"></textarea>
                     <div id="contentHelp" class="form-text">100字以內</div>
                 </div>
-                <button type="button" id="btnComment" class="btn btn-primary">留言</button>
+                <button type="button" id="btnComment" class="btn btn-primary">留言</button> -->
             </div>
         </div>
     </div>
