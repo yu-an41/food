@@ -3,7 +3,7 @@
 $db_host = 'localhost';
 $db_name = 'no_waste';
 $db_user = 'root';
-$db_pass = '';
+$db_pass = '0305';
 // 明天記得改這邊
 
 $dsn = "mysql:host={$db_host};dbname={$db_name};charset=utf8";
