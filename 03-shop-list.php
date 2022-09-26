@@ -43,7 +43,7 @@ $output = [
 ?>
 <?php require __DIR__ . '/parts/html-head.php'; ?>
 <?php include __DIR__ . '/parts/nav-bar-admin.php'; ?>
-<div class="container">
+<div class="container-fluid">
     <div class="row">
         <div class="col">
             <nav aria-label="Page navigation example">

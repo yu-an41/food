@@ -45,7 +45,7 @@ include __DIR__ . '/parts/nav-bar-no-admin.php'; ?>
             .then(obj => {
                 console.log(obj);
                 if (obj.success) {
-                    location.href = 'basepage-no-admin.php';
+                    location.href = '00-basepage-no-admin.php';
                 } else {
                     alert(obj.error);
                 }
