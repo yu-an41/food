@@ -92,6 +92,7 @@ $output = [
                         <th scope="col">惜食照</th>
                         <th scope="col">惜食名稱</th>
                         <th scope="col">惜食類別</th>
+                        <th scope="col">惜食敘述</th>
                         <th scope="col">定價</th>
                         <th scope="col">折數</th>
                         <th scope="col">取餐截止時間</th>
@@ -114,6 +115,7 @@ $output = [
                             </td>
                             <td><?= $r['product_name'] ?></td>
                             <td><?= $r['product_categories'] ?></td>
+                            <td><?= $r['product_description'] ?></td>
                             <td><?= $r['unit_price'] ?></td>
                             <td><?= $r['sale_price'] ?></td>
                             <td><?= $r['shop_deadline'] ?></td>

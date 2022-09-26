@@ -110,7 +110,7 @@ $output = [
                             </td>
                             <td><?= $r['sid'] ?></td>
                             <td>
-                                <img src="./uploads/<?= $r['shop_cover'] ?>" alt="" style="width: 100px;">
+                                <img src="./uploads/<?= $r['shop_cover'] ?>" alt="" style="width: 200px;">
                             </td>
                             <td><?= $r['shop_email'] ?></td>
                             <td><?= $r['shop_password'] ?></td>
