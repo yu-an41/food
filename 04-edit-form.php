@@ -1,5 +1,5 @@
 <?php
-require __DIR__ . '/parts/admin-required.php';
+require __DIR__ . '/parts/user-required.php';
 require __DIR__ . '/parts/connect_db.php';
 $pageName = 'product-edit';
 
@@ -26,7 +26,7 @@ $rows = $pdo->query($sql)->fetchALL();
 
 ?>
 <?php include __DIR__ . '/parts/html-head.php'; ?>
-<?php include __DIR__ . '/parts/nav-bar-admin.php'; ?>
+<?php include __DIR__ . '/parts/nav-bar-no-admin.php'; ?>
 <div class="container">
     <div class="row">
         <div class="col-lg-6">

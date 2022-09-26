@@ -30,13 +30,10 @@ if (!isset($_SESSION)) {
                         <a class="nav-link <?= $pageName == 'shop-list' ? 'active' : '' ?>" href="03-shop-list.php">店家</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link <?= $pageName == 'product' ? 'active' : '' ?>" href="04-product-list.php">商品</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link <?= $pageName == 'event' ? 'active' : '' ?>" href="06-list.php">活動</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link <?= $pageName == 'forum' ? 'active' : '' ?>" href="02-forum_list.php">論壇</a>
+                        <a class="nav-link <?= $pageName == 'list' ? 'active' : '' ?>" href="02-forum_list.php">論壇</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link <?= $pageName == 'orderHistory' ? 'active' : '' ?>" href="01-order-history-admin.php">訂單</a>

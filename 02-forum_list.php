@@ -5,6 +5,7 @@ if (empty($_SESSION['admin'])) {
     header('Location: 00-login-form-admin.php');
 }
 $pageName = 'list';
+
 $perPage = 5;
 $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
 $t_sql = "SELECT COUNT(1) FROM official_post";

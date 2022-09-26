@@ -1,5 +1,5 @@
 <?php
-require __DIR__ . '/parts/admin-required.php';
+require __DIR__ . '/parts/user-required.php';
 require __DIR__ . '/parts/connect_db.php';
 $pageName = 'card-insert';
 
@@ -11,7 +11,7 @@ $rows2 = $pdo->query($sql2)->fetchALL();
 ?>
 
 <?php require __DIR__ . '/parts/html-head.php'; ?>
-<?php include __DIR__ . '/parts/nav-bar-admin.php'; ?>
+<?php include __DIR__ . '/parts/nav-bar-no-admin.php'; ?>
 <div class="container">
     <div class="row">
         <div class="col-lg-6">
@@ -91,23 +91,5 @@ $rows2 = $pdo->query($sql2)->fetchALL();
         });
 
     }
-    // function checkForm() {
-    //     const fd = new FormData(document.form1);
-    //     foreach()
-    //     fetch('04-insert-api.php', {
-    //         method: 'POST',
-    //         body: fd
-
-    //     }).then(r => r.json()).then(obj => {
-    //         // console.log(obj);
-    //         if (!obj.success) {
-    //             alert(obj.error);
-    //         } else {
-    //             alert('已新增惜食商品')
-    //             location.href = 'card-list.php';
-    //         }
-    //     });
-
-    // }
 </script>
 <?php include __DIR__ . '/parts/html-foot.php'; ?>

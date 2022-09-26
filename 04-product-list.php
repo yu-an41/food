@@ -1,5 +1,5 @@
 <?php
-require __DIR__ . '/parts/admin-required.php';
+require __DIR__ . '/parts/user-required.php';
 require __DIR__ . '/parts/connect_db.php';
 $pageName = 'product-list';
 
@@ -47,9 +47,9 @@ $output = [
 
 ?>
 <?php include __DIR__ . '/parts/html-head.php'; ?>
-<?php include __DIR__ . '/parts/nav-bar-admin.php'; ?>
+<?php include __DIR__ . '/parts/nav-bar-no-admin.php'; ?>
 <div class="container">
-    <div class="row">
+    <div class="row d-flex flex-row jusitfy-content-around">
         <div class="col">
             <nav aria-label="Page navigation example">
                 <ul class="pagination">
@@ -77,6 +77,9 @@ $output = [
                 </ul>
             </nav>
         </div>
+        <div class="col-lg-6 d-flex flex-row-reverse mb-2">
+            <a href="04-insert-form.php" class="btn btn-success">新增商品</a>
+        </div>
     </div>
 
     <div class="row">
@@ -84,9 +87,6 @@ $output = [
             <table class="table table-striped table-bordered">
                 <thead>
                     <tr>
-                        <th scope="col">
-                            <i class="fas fa-trash-alt"></i>
-                        </th>
                         <th scope="col">惜食編號</th>
                         <th scope="col">惜食商家</th>
                         <th scope="col">惜食照</th>
@@ -105,11 +105,6 @@ $output = [
                 <tbody>
                     <?php foreach ($rows as $r) : ?>
                         <tr>
-                            <td>
-                                <a href="javascript: delete_it(<?= $r['sid'] ?>)">
-                                    <i class="fa-solid fa-trash-can"></i>
-                                </a>
-                            </td>
                             <td><?= $r['sid'] ?></td>
                             <td><?= $r['shop_name'] ?></td>
                             <td>
@@ -136,13 +131,4 @@ $output = [
         </div>
     </div>
     <?php include __DIR__ . '/parts/scripts.php'; ?>
-    <script>
-        const table = document.querySelector('table');
-
-        function delete_it(sid) {
-            if (confirm(`確定要刪除編號為 ${sid} 的資料嗎?`)) {
-                location.href = `delete.php?sid=${sid}`;
-            }
-        }
-    </script>
     <?php include __DIR__ . '/parts/html-foot.php'; ?>
