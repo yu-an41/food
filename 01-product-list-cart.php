@@ -87,7 +87,7 @@ include __DIR__ . '/parts/nav-bar-no-admin.php'; ?>
                             <select class="form-select" style="display: inline-block; min-width: 8rem; max-width: 12rem;">
                                 <?php for ($i = 1; $i <= 5; $i++) : ?>
                                     <option value="<?= $i ?>"><?= $i ?></option>
-                                <? endfor; ?>
+                                <?php endfor; ?>
                             </select>
                             <button class="btn btn-success" data-sid="<?= $r['product_sid'] ?>" onclick="addToCart(event)">
                                 <i class="fa-solid fa-cart-shopping"></i>

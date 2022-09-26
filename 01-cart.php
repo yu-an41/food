@@ -53,7 +53,7 @@ include __DIR__ . '/parts/nav-bar-no-admin.php'; ?>
                                         <?php for ($i = 1; $i <= 10; $i++) : ?>
                                             <option value="<?= $i ?>" <?= $i == $v['qty'] ? 'selected' : '' ?>>
                                                 <?= $i ?></option>
-                                        <? endfor; ?>
+                                        <?php endfor; ?>
                                     </select>
                                 </td>
                                 <td class="sub-total">
@@ -82,7 +82,7 @@ include __DIR__ . '/parts/nav-bar-no-admin.php'; ?>
         <?php endif; ?>
         <br>
         <a href="01-product-list-cart.php" class="btn btn-success">繼續選購</a>
-    <? endif; ?>
+    <?php endif; ?>
 </div>
 <?php
 include __DIR__ . '/parts/scripts.php'; ?>
