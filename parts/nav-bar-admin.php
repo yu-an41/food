@@ -29,6 +29,9 @@ if (!isset($_SESSION)) {
                     <li class="nav-item ">
                         <a class="nav-link <?= $pageName == 'shop-list' ? 'active' : '' ?>" href="03-shop-list.php">店家</a>
                     </li>
+                    <li class="nav-item <?= $pageName == 'productCart' ? 'active' : '' ?>">
+                        <a class="nav-link" href="04-product-list.php">商品列表</a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link <?= $pageName == 'event' ? 'active' : '' ?>" href="06-list.php">活動</a>
                     </li>

@@ -1,5 +1,5 @@
 <?php
-require __DIR__ . '/parts/user-required.php';
+require __DIR__ . '/parts/admin-required.php';
 require __DIR__ . '/parts/connect_db.php';
 $pageName = 'product-list';
 
@@ -47,7 +47,7 @@ $output = [
 
 ?>
 <?php include __DIR__ . '/parts/html-head.php'; ?>
-<?php include __DIR__ . '/parts/nav-bar-no-admin.php'; ?>
+<?php include __DIR__ . '/parts/nav-bar-admin.php'; ?>
 <div class="container">
     <div class="row d-flex flex-row jusitfy-content-around">
         <div class="col">

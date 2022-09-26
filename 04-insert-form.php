@@ -1,5 +1,5 @@
 <?php
-require __DIR__ . '/parts/user-required.php';
+require __DIR__ . '/parts/admin-required.php';
 require __DIR__ . '/parts/connect_db.php';
 $pageName = 'card-insert';
 
@@ -11,7 +11,7 @@ $rows2 = $pdo->query($sql2)->fetchALL();
 ?>
 
 <?php require __DIR__ . '/parts/html-head.php'; ?>
-<?php include __DIR__ . '/parts/nav-bar-no-admin.php'; ?>
+<?php include __DIR__ . '/parts/nav-bar-admin.php'; ?>
 <div class="container">
     <div class="row">
         <div class="col-lg-6">
