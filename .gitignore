@@ -1,9 +1,3 @@
-parts
-basepage-admin.php
-basepage-no-admin.php
-login-api-admin.php
-login-form-admin.php
-logout-admin.php
-logout-user.php
+.gitignore
 uploads
 img
