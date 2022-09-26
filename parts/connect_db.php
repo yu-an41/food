@@ -1,7 +1,7 @@
 <?php
 
 $db_host = 'localhost';
-$db_name = 'no_waste';
+$db_name = 'forum';
 $db_user = 'root';
 $db_pass = '';
 
