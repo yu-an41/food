@@ -73,13 +73,13 @@ include __DIR__ . '/parts/nav-bar-no-admin.php'; ?>
         <div class="alert alert-success" role="alert">
             <span>總計：</span id="total-price"> <?= $total ?> <span></span>元
         </div>
-        <?php /*if (empty($_SESSION['member'])) :*/ ?>
-        <!-- <div class="alert alert-danger" role="alert">
+        <?php if (empty($_SESSION['member'])) : ?>
+            <div class="alert alert-danger" role="alert">
                 請先登入會員，再結帳
-            </div> -->
-        <?php /*else :*/ ?>
-        <a href="01-buy.php" class="btn btn-warning mb-3">結帳</a>
-        <?php /*endif;*/ ?>
+            </div>
+        <?php else : ?>
+            <a href="01-buy.php" class="btn btn-warning mb-3">結帳</a>
+        <?php endif; ?>
         <br>
         <a href="01-product-list-cart.php" class="btn btn-success">繼續選購</a>
     <? endif; ?>
@@ -99,7 +99,12 @@ include __DIR__ . '/parts/scripts.php'; ?>
         const myQty = event.currentTarget.parentNode.querySelector('.form-select').value;
         // console.log(mySid);
         sid.value = mySid;
-        qty.value = myQty;
+        if (myQty <= 10) {
+            qty.value = myQty;
+        } else {
+            qty.value = 10;
+            myQty.value = 10;
+        }
 
         const fd = new FormData(document.querySelector('#formCart'));
 

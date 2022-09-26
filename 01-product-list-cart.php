@@ -112,7 +112,12 @@ include __DIR__ . '/parts/scripts.php'; ?>
         // console.log(btn);
 
         sid.value = mySid;
-        qty.value = myQty;
+        if (myQty <= 10) {
+            qty.value = myQty;
+        } else {
+            qty.value = 10;
+            myQty.value = 10;
+        }
 
         const fd = new FormData(document.querySelector('#form1'));
 

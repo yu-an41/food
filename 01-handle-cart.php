@@ -14,7 +14,11 @@ if (!empty($sid)) {
     if (!empty($qty)) {
 
         if (!empty($_SESSION['cart'][$sid])) {
-            $_SESSION['cart'][$sid]['qty'] += $qty;
+            if($qty <= 10) {
+                $_SESSION['cart'][$sid]['qty'] += $qty;
+            } else {
+                $_SESSION['cart'][$sid]['qty'] = 10;
+            }
         } else {
             $sql = "SELECT * FROM `product-list` WHERE `product_sid`= $sid";
             $row = $pdo->query($sql)->fetch();
